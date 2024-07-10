@@ -36,7 +36,6 @@ public class Customer {
     public List<Coffee> orderCoffee(String name, int count) {
         Barista barista = new Barista();
         List<Coffee> coffees = barista.makeCoffee(name, count);
-
         // 만드는 중...
     }
 
