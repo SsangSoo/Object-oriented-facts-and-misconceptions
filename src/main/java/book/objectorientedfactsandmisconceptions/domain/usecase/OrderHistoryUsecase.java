@@ -15,12 +15,7 @@ public interface OrderHistoryUsecase {
     // 1. 주문내역을 담을 수 있다.
     void addOrderHistory(List<Coffee> coffees);
 
-
-
-
     // 2. 주문내역을 확인할 수 있다.
     List<OrderHistory> getOrderHistory(String customerName);
-
-
 
 }

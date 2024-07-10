@@ -37,7 +37,7 @@ public class Customer {
         Barista barista = new Barista();
         List<Coffee> coffees = barista.makeCoffee(name, count);
 
-
+        // 만드는 중...
     }
 
         // 3. 주문 내역을 확인할 수 있다.
