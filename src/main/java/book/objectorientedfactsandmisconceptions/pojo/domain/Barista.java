@@ -2,9 +2,7 @@ package book.objectorientedfactsandmisconceptions.pojo.domain;
 
 
 import book.objectorientedfactsandmisconceptions.pojo.domain.usecase.BaristaUsecase;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +13,18 @@ import java.util.List;
  *      주문 받은 커피 내역을 판매 내역에 저장한다.
  */
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Barista implements BaristaUsecase {
+
+    private String name;
+    public List<SalesHistory> orderHistoris = new ArrayList<>();    // 주문내역
+
+    private Barista(String name) {
+        this.name = name;
+    }
+
+    public static Barista of(String name) {
+        return new Barista(name);
+    }
 
     // 1. 주문받은 커피를 제조함.
     @Override

@@ -1,8 +1,10 @@
 package book.objectorientedfactsandmisconceptions.pojo.domain;
 
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
+/**
+ * 커피 객체
+ * 책임 1. 제조된다.
+ */
 public class Coffee {
 
     private String name;

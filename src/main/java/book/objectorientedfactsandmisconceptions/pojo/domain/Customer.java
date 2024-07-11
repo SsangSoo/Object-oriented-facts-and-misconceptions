@@ -39,8 +39,8 @@ public class Customer {
     }
 
     // 2. 바리스타에게 커피를 주문할 수 있다.
-    public List<Coffee> orderCoffee(Order[] orders) {
-        Barista barista = new Barista();
+    public List<Coffee> orderCoffee(Order[] orders, String name) {
+        Barista barista = Barista.of(name);
         List<Coffee> coffees = barista.makeCoffee(orders);
 
         // 주문내역에 추가
