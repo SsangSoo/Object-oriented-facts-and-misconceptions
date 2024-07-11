@@ -1,6 +1,6 @@
-package book.objectorientedfactsandmisconceptions.domain;
+package book.objectorientedfactsandmisconceptions.pojo.domain;
 
-import book.objectorientedfactsandmisconceptions.domain.usecase.SellHistoryUsecase;
+import book.objectorientedfactsandmisconceptions.pojo.domain.usecase.SellHistoryUsecase;
 
 import java.time.LocalDate;
 import java.util.HashMap;

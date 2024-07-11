@@ -1,7 +1,7 @@
-package book.objectorientedfactsandmisconceptions.domain.usecase;
+package book.objectorientedfactsandmisconceptions.pojo.domain.usecase;
 
-import book.objectorientedfactsandmisconceptions.domain.Coffee;
-import book.objectorientedfactsandmisconceptions.domain.OrderHistory;
+import book.objectorientedfactsandmisconceptions.pojo.domain.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.domain.OrderHistory;
 
 import java.util.List;
 

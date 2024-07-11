@@ -1,6 +1,5 @@
-package book.objectorientedfactsandmisconceptions.domain;
+package book.objectorientedfactsandmisconceptions.pojo.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -14,9 +13,9 @@ public class Coffee {
         return new Coffee(name, price);
     }
 
-    private Coffee(int price, String name) {
-        this.price = price;
+    private Coffee(String name, int price) {
         this.name = name;
+        this.price = price;
     }
 
 }

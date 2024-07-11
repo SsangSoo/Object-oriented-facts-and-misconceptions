@@ -1,7 +1,10 @@
-package book.objectorientedfactsandmisconceptions.domain;
+package book.objectorientedfactsandmisconceptions.pojo.domain;
 
 import lombok.Getter;
 
+/**
+ * 메뉴판
+ */
 @Getter
 public enum Menu {
 
