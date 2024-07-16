@@ -1,22 +1,25 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain;
+package book.objectorientedfactsandmisconceptions.pojo.domain.barista;
 
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.usecase.BaristaUsecase;
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.domain.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.domain.order.Order;
+import book.objectorientedfactsandmisconceptions.pojo.usecase.BaristaUsecase;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-/**
- * 바리스타
- * 책임 1. 주문 받은 커피를 제조한다.
- *      주문 받은 커피 내역을 판매 내역에 저장한다.
- */
+
 @Getter
 public class Barista implements BaristaUsecase {
 
     private String name;
-    public List<SalesHistory> orderHistoris = new ArrayList<>();    // 주문내역
+    public Map<LocalDate, List<Order>> saleHistoris = new HashMap<>();    // 판매 내역
+
 
     private Barista(String name) {
         this.name = name;
@@ -27,6 +30,7 @@ public class Barista implements BaristaUsecase {
     }
 
     // 1. 주문받은 커피를 제조함.
+        // 제조하면서 판매 내역을 담는다.
     @Override
     public List<Coffee> makeCoffee(Order[] orders) {
         List<Coffee> coffees = new ArrayList<>();
@@ -36,6 +40,7 @@ public class Barista implements BaristaUsecase {
             Menu choiceCoffee = Menu.valueOf(order.getMenu().getName());
             addingCoffee(coffees, choiceCoffee, order.getCount());
         }
+        this.saleHistoris.put(LocalDate.now(), List.of(orders)); // 제조하면서 판매 내역에 담음.
         return coffees;
     }
 

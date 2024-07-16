@@ -1,5 +1,9 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain;
+package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
 
+import book.objectorientedfactsandmisconceptions.pojo.domain.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.domain.order.Order;
+import book.objectorientedfactsandmisconceptions.pojo.domain.barista.Barista;
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,12 +21,9 @@ import java.util.List;
  * 책임 3. 주문 내역을 확인할 수 있다.
  */
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Customer {
 
     private String name;                                            // 이름
-    public List<OrderHistory> orderHistoris = new ArrayList<>();    // 주문내역
 
     public Customer(String name) {
         this.name = name;
