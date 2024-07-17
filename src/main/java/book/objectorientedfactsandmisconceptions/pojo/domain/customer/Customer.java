@@ -4,32 +4,25 @@ import book.objectorientedfactsandmisconceptions.pojo.domain.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.domain.order.Order;
 import book.objectorientedfactsandmisconceptions.pojo.domain.barista.Barista;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import lombok.AllArgsConstructor;
+import book.objectorientedfactsandmisconceptions.pojo.usecase.CustomerUsecase;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-/**
- * 손님의 책임
- * 책임 1. 메뉴판을 통해서 메뉴 목록을 확인할 수 있다.
- * 책임 2. 바리스타에게 커피를 주문할 수 있다(다수의 주문 가능).
- *      주문내역에 담겨야하고,
- *      바리스타로부터 제조된 커피를 얻어올 수 있어야한다.
- * 책임 3. 주문 내역을 확인할 수 있다.
- */
+
 @Getter
-public class Customer {
+public class Customer implements CustomerUsecase {
 
-    private String name;                                            // 이름
+    private String name;    // 이름
+    private Map<LocalDate, OrderHistory> orderHistory = new HashMap<>();
 
     public Customer(String name) {
         this.name = name;
     }
 
-    // 책임 1. 메뉴판을 통해서 메뉴 목록을 확인할 수 있다.
     public Menu[] getCoffeeMenu() {
         Menu[] sellingCoffeese = Menu.values();
 
@@ -39,18 +32,21 @@ public class Customer {
         return Menu.values();
     }
 
-    // 2. 바리스타에게 커피를 주문할 수 있다.
     public List<Coffee> orderCoffee(Order[] orders, String name) {
         Barista barista = Barista.of(name);
         List<Coffee> coffees = barista.makeCoffee(orders);
 
         // 주문내역에 추가
-        OrderHistory todayOrderHistory = orderHistoris.stream()
-                .filter(orderHistory -> orderHistory.getOrderDate().isEqual(LocalDate.now()))
-                .toList().getFirst();
-        todayOrderHistory.addPrice(getTotalPrice(orders));
+        addOrderHistory(orders);
 
         return coffees;
+    }
+
+    // 주문내역 추가 private Method
+    private void addOrderHistory(Order[] orders) {
+        OrderHistory todayOrderHistory = orderHistory.get(LocalDate.now());
+        todayOrderHistory.getOrders().addAll(List.of(orders));
+        orderHistory.put(LocalDate.now(), todayOrderHistory);
     }
 
     // 주문한 내역의 요금을 구한다.
