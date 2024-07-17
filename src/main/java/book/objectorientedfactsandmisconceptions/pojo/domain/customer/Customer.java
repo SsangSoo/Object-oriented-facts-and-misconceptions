@@ -8,6 +8,7 @@ import book.objectorientedfactsandmisconceptions.pojo.usecase.CustomerUsecase;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +17,8 @@ import java.util.Map;
 @Getter
 public class Customer implements CustomerUsecase {
 
-    private String name;    // 이름
-    private Map<LocalDate, OrderHistory> orderHistory = new HashMap<>();
+    private String name;    // 고객 이름
+    private List<OrderHistory> orderHistories = new ArrayList<>();
 
     public Customer(String name) {
         this.name = name;
@@ -44,24 +45,17 @@ public class Customer implements CustomerUsecase {
 
     // 주문내역 추가 private Method
     private void addOrderHistory(Order[] orders) {
-        OrderHistory todayOrderHistory = orderHistory.get(LocalDate.now());
-        todayOrderHistory.getOrders().addAll(List.of(orders));
-        orderHistory.put(LocalDate.now(), todayOrderHistory);
+        orderHistories.add(OrderHistory.of(orders));
     }
 
     // 주문한 내역의 요금을 구한다.
     private int getTotalPrice(Order[] orders) {
-        int orderTotalPrice = 0;
+        int orderPrice = 0;
         for(int index = 0; index < orders.length; index++) {
             Order order = orders[index];
-            orderTotalPrice += order.getMenu().getPrice() * order.getCount();
+            orderPrice += order.getMenu().getPrice() * order.getCount();
         }
-        return orderTotalPrice;
-    }
-
-    // 3. 주문 내역을 확인할 수 있다.
-    public List<OrderHistory> getOrderHistory() {
-        return orderHistoris;
+        return orderPrice;
     }
 
 }

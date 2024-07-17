@@ -13,10 +13,13 @@ import java.util.List;
  *      주문내역에 담겨야하고,
  *      바리스타로부터 제조된 커피를 얻어올 수 있어야한다.
  * 책임 3. 주문 내역을 확인할 수 있다.
+ *      년, 월, 일 별로 주문 내역을 확인할 수 있다.
  */
 public interface CustomerUsecase {
 
     Menu[] getCoffeeMenu();
 
     List<Coffee> orderCoffee(Order[] orders, String name);
+
+    List<>
 }
