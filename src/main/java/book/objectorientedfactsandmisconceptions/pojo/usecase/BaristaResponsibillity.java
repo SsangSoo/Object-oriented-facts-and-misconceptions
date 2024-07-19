@@ -13,12 +13,13 @@ import java.util.List;
  *  - 일별, 월별, 년별
  *
  */
-public interface BaristaUsecase {
+public interface BaristaResponsibillity {
 
     // 1. 커피를 제조한다.
     List<Coffee> makeCoffee(Order[] orders);
 
     // 2. 판매내역을 날짜별로 확인할 수 있다.
+
 
 
 }

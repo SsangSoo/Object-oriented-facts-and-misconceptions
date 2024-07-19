@@ -2,9 +2,9 @@ package book.objectorientedfactsandmisconceptions.pojo.domain.barista;
 
 
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.domain.order.Order;
-import book.objectorientedfactsandmisconceptions.pojo.usecase.BaristaUsecase;
+import book.objectorientedfactsandmisconceptions.pojo.usecase.BaristaResponsibillity;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -15,7 +15,7 @@ import java.util.Map;
 
 
 @Getter
-public class Barista implements BaristaUsecase {
+public class Barista implements BaristaResponsibillity {
 
     private String name;
     public Map<LocalDate, List<Order>> saleHistoris = new HashMap<>();    // 판매 내역

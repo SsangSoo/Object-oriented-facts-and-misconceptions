@@ -1,6 +1,5 @@
 package book.objectorientedfactsandmisconceptions.pojo.domain.barista;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.CoffeeCount;
 import lombok.Builder;
 import lombok.Getter;
 

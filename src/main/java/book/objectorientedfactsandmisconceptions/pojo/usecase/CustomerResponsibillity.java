@@ -1,9 +1,12 @@
 package book.objectorientedfactsandmisconceptions.pojo.usecase;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.domain.customer.PaymentHistory;
 import book.objectorientedfactsandmisconceptions.pojo.domain.order.Order;
+import book.objectorientedfactsandmisconceptions.pojo.domain.util.DateUnit;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -15,11 +18,13 @@ import java.util.List;
  * 책임 3. 주문 내역을 확인할 수 있다.
  *      년, 월, 일 별로 주문 내역을 확인할 수 있다.
  */
-public interface CustomerUsecase {
+public interface CustomerResponsibillity {
 
     Menu[] getCoffeeMenu();
 
     List<Coffee> orderCoffee(Order[] orders, String name);
 
-    List<>
+    PaymentHistory getPaymentHistoryAtYear(int year);
+    PaymentHistory getPaymentHistoryAtMonth(int year, int month);
+    PaymentHistory getPaymentHistoryAtDay(LocalDate date);
 }
