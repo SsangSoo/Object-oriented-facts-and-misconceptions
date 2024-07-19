@@ -14,20 +14,24 @@ public class SalesResult {
 
     private LocalDate saleDate;
     private int totalPrice;
-    private List<CoffeeCount> coffees;
+//    private List<CoffeeCount> coffees;
 
     @Builder
-    private SalesResult(LocalDate saleDate, int totalPrice, List<CoffeeCount> coffees) {
+    private SalesResult(LocalDate saleDate, int totalPrice
+//            , List<CoffeeCount> coffees
+    ) {
         this.saleDate = saleDate;
         this.totalPrice = totalPrice;
-        this.coffees = coffees;
+//        this.coffees = coffees;
     }
 
-    public SalesResult of(LocalDate saleDate, int totalPrice, List<CoffeeCount> coffees) {
+    public SalesResult of(LocalDate saleDate, int totalPrice
+//            , List<CoffeeCount> coffees
+    ) {
         return SalesResult.builder()
                 .saleDate(saleDate)
                 .totalPrice(totalPrice)
-                .coffees(coffees)
+//                .coffees(coffees)
                 .build();
     }
 

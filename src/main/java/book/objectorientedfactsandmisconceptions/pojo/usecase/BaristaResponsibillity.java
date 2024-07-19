@@ -1,7 +1,7 @@
 package book.objectorientedfactsandmisconceptions.pojo.usecase;
 
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.order.Order;
+import book.objectorientedfactsandmisconceptions.pojo.domain.order.CoffeeOrder;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public interface BaristaResponsibillity {
 
     // 1. 커피를 제조한다.
-    List<Coffee> makeCoffee(Order[] orders);
+    List<Coffee> makeCoffee(List<CoffeeOrder> coffeeOrders);
 
     // 2. 판매내역을 날짜별로 확인할 수 있다.
 

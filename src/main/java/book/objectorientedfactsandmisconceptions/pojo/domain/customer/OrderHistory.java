@@ -1,7 +1,7 @@
 package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
 
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.order.Order;
+import book.objectorientedfactsandmisconceptions.pojo.domain.order.CoffeeOrder;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -17,30 +17,24 @@ import java.util.List;
 public class OrderHistory {
 
     private LocalDate orderedDate;
-    private List<Order> orderList = new ArrayList<>();
+    private List<CoffeeOrder> coffeeOrderList = new ArrayList<>();
     private int totalPrice;
 
-    public static OrderHistory of(Order[] orders) {
-        return new OrderHistory(orders);
+    public static OrderHistory of(List<CoffeeOrder> coffeeOrders) {
+        return new OrderHistory(coffeeOrders);
     }
 
-    private OrderHistory(Order[] orders) {
+    private OrderHistory(List<CoffeeOrder> coffeeOrders) {
         this.orderedDate = LocalDate.now();
-        this.orderList = List.of(orders);
-        this.totalPrice = calculateTotalPrice(List.of(orders));
-    }
-
-    private OrderHistory(List<Order> orders) {
-        this.orderedDate = LocalDate.now();
-        this.orderList = orders;
-        this.totalPrice = calculateTotalPrice(orders);
+        this.coffeeOrderList = coffeeOrders;
+        this.totalPrice = calculateTotalPrice(coffeeOrders);
     }
 
     // 주문에 대한 총계
-    private int calculateTotalPrice(List<Order> orders) {
+    private int calculateTotalPrice(List<CoffeeOrder> coffeeOrders) {
         int totalPrice = 0;
-        for(Order order : orders) {
-            totalPrice = order.getMenu().getPrice() * order.getCount();
+        for(CoffeeOrder coffeeOrder : coffeeOrders) {
+            totalPrice = coffeeOrder.getMenu().getPrice() * coffeeOrder.getCount();
         }
         return totalPrice;
     }

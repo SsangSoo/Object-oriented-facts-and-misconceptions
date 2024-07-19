@@ -3,8 +3,7 @@ package book.objectorientedfactsandmisconceptions.pojo.usecase;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.domain.customer.PaymentHistory;
-import book.objectorientedfactsandmisconceptions.pojo.domain.order.Order;
-import book.objectorientedfactsandmisconceptions.pojo.domain.util.DateUnit;
+import book.objectorientedfactsandmisconceptions.pojo.domain.order.CoffeeOrder;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,7 +21,7 @@ public interface CustomerResponsibillity {
 
     Menu[] getCoffeeMenu();
 
-    List<Coffee> orderCoffee(Order[] orders, String name);
+    List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String name);
 
     PaymentHistory getPaymentHistoryAtYear(int year);
     PaymentHistory getPaymentHistoryAtMonth(int year, int month);

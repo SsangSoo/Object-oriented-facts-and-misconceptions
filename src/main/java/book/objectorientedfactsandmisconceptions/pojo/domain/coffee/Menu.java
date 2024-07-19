@@ -13,11 +13,11 @@ public enum Menu {
     CAFELATTE("카페라떼", 4500);
 
 
-    private String name;
+    private String coffee;
     private int price;
 
-    Menu(String name, int price) {
-        this.name = name;
+    Menu(String coffee, int price) {
+        this.coffee = coffee;
         this.price = price;
     }
 
