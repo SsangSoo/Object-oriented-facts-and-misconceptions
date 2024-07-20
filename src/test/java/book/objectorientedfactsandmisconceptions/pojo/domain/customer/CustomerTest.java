@@ -1,12 +1,12 @@
 package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.order.CoffeeOrder;
-import org.assertj.core.api.Assertions;
+import book.objectorientedfactsandmisconceptions.pojo.domain.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.domain.Customer;
+import book.objectorientedfactsandmisconceptions.pojo.domain.OrderHistory;
+import book.objectorientedfactsandmisconceptions.pojo.domain.PaymentHistory;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;

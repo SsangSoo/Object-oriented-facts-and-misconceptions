@@ -2,8 +2,8 @@ package book.objectorientedfactsandmisconceptions.pojo.usecase;
 
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.customer.PaymentHistory;
-import book.objectorientedfactsandmisconceptions.pojo.domain.order.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.domain.PaymentHistory;
+import book.objectorientedfactsandmisconceptions.pojo.domain.CoffeeOrder;
 
 import java.time.LocalDate;
 import java.util.List;

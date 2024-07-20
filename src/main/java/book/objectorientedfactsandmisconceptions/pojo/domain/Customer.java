@@ -1,7 +1,6 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
+package book.objectorientedfactsandmisconceptions.pojo.domain;
 
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.domain.order.CoffeeOrder;
 import book.objectorientedfactsandmisconceptions.pojo.domain.barista.Barista;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.usecase.CustomerResponsibillity;

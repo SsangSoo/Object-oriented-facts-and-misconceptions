@@ -1,4 +1,4 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.order;
+package book.objectorientedfactsandmisconceptions.pojo.domain;
 
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
 import lombok.Getter;
