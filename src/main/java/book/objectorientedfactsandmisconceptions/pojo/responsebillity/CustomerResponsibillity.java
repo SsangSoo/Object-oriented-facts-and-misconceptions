@@ -1,4 +1,4 @@
-package book.objectorientedfactsandmisconceptions.pojo.usecase;
+package book.objectorientedfactsandmisconceptions.pojo.responsebillity;
 
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;

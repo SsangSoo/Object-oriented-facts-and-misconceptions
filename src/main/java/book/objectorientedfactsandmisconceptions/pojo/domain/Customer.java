@@ -3,7 +3,7 @@ package book.objectorientedfactsandmisconceptions.pojo.domain;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.domain.barista.Barista;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.usecase.CustomerResponsibillity;
+import book.objectorientedfactsandmisconceptions.pojo.responsebillity.CustomerResponsibillity;
 import lombok.Getter;
 
 import java.time.LocalDate;
