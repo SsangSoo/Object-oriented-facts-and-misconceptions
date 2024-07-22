@@ -20,14 +20,22 @@ public class OrderHistory {
     private List<CoffeeOrder> coffeeOrderList = new ArrayList<>();
     private int totalPrice;
 
+    public static OrderHistory of(List<CoffeeOrder> coffeeOrders, LocalDate orderedDate) {
+        return new OrderHistory(coffeeOrders, orderedDate);
+    }
+
     public static OrderHistory of(List<CoffeeOrder> coffeeOrders) {
         return new OrderHistory(coffeeOrders);
     }
 
-    private OrderHistory(List<CoffeeOrder> coffeeOrders) {
-        this.orderedDate = LocalDate.now();
+    private OrderHistory(List<CoffeeOrder> coffeeOrders, LocalDate orderedDate) {
+        this.orderedDate = orderedDate;
         this.coffeeOrderList = coffeeOrders;
         this.totalPrice = calculateTotalPrice(coffeeOrders);
+    }
+
+    private OrderHistory(List<CoffeeOrder> coffeeOrders) {
+        this(coffeeOrders, LocalDate.now());
     }
 
     // 주문에 대한 총계

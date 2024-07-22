@@ -32,7 +32,7 @@ public class Barista implements BaristaResponsibillity {
     // 1. 주문받은 커피를 제조함.
         // 제조하면서 판매 내역을 담는다.
     @Override
-    public List<Coffee> makeCoffee(List<CoffeeOrder> coffeeOrders) {
+    public List<Coffee> makeCoffee(List<CoffeeOrder> coffeeOrders, LocalDate orderDate) {
         List<Coffee> coffees = new ArrayList<>();
 
         for(int index = 0; index < coffeeOrders.size(); index++) {
@@ -40,8 +40,16 @@ public class Barista implements BaristaResponsibillity {
             Menu choiceCoffee = coffeeOrder.getMenu();
             addingCoffee(coffees, choiceCoffee, coffeeOrder.getCount());
         }
-        this.saleHistoris.put(LocalDate.now(), coffeeOrders); // 제조하면서 판매 내역에 담음.
+        this.saleHistoris.put(getLocalDate(orderDate), coffeeOrders); // 제조하면서 판매 내역에 담음.
         return coffees;
+    }
+
+    // 주문 일자가 null이라면 오늘 날짜로 설정
+    private static LocalDate getLocalDate(LocalDate orderDate) {
+        if(orderDate == null) {
+            orderDate = LocalDate.now();
+        }
+        return orderDate;
     }
 
     // 주문 메뉴 개수만큼 커피를 제조하여 담는다.
@@ -52,6 +60,7 @@ public class Barista implements BaristaResponsibillity {
     }
 
 
+    // 커피 메뉴 선택
     private static String getMakeCoffeeMenu(String coffee) {
         String makeCoffee = "AMERICANO";
         for(Menu menu : Menu.values()) {

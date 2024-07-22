@@ -21,7 +21,8 @@ public interface CustomerResponsibillity {
 
     Menu[] getCoffeeMenu();
 
-    List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String name);
+    List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String name, LocalDate orderDate);
+    List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String name); // 위의 메서드로 위임
 
     PaymentHistory getPaymentHistoryAtYear(int year);
     PaymentHistory getPaymentHistoryAtMonth(int year, int month);

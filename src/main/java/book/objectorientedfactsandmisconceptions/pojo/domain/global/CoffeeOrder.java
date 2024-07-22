@@ -4,6 +4,7 @@ import lombok.Getter;
 
 /**
  * 주문 정보를 담기 위한 객체
+ * 책임 1. 주문 정보를 담는다.
  */
 @Getter
 public class CoffeeOrder {

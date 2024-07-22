@@ -37,13 +37,19 @@ public class Customer implements CustomerResponsibillity {
         return Menu.values();
     }
 
+
     @Override
     public List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String BaristaName) {
+        return orderCoffee(coffeeOrders, BaristaName, LocalDate.now());
+    }
+
+    @Override
+    public List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String BaristaName, LocalDate orderDate) {
         Barista barista = Barista.of(name);
-        List<Coffee> coffees = barista.makeCoffee(coffeeOrders);
+        List<Coffee> coffees = barista.makeCoffee(coffeeOrders, orderDate);
 
         // 주문내역에 추가
-        addOrderHistory(coffeeOrders);
+        addOrderHistory(coffeeOrders, orderDate);
 
         return coffees;
     }
@@ -81,8 +87,8 @@ public class Customer implements CustomerResponsibillity {
     /**
      * 주문내역 추가 private Method
      */
-    private void addOrderHistory(List<CoffeeOrder> coffeeOrders) {
-        orderHistories.add(OrderHistory.of(coffeeOrders));
+    private void addOrderHistory(List<CoffeeOrder> coffeeOrders, LocalDate orderDate) {
+        orderHistories.add(OrderHistory.of(coffeeOrders, orderDate));
     }
 
     /**

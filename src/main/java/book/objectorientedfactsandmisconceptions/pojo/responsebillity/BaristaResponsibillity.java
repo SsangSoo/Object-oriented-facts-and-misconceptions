@@ -3,6 +3,7 @@ package book.objectorientedfactsandmisconceptions.pojo.responsebillity;
 import book.objectorientedfactsandmisconceptions.pojo.domain.global.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.domain.global.CoffeeOrder;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
 public interface BaristaResponsibillity {
 
     // 1. 커피를 제조한다.
-    List<Coffee> makeCoffee(List<CoffeeOrder> coffeeOrders);
+    List<Coffee> makeCoffee(List<CoffeeOrder> coffeeOrders, LocalDate orderDate);
 
     // 2. 판매내역을 날짜별로 확인할 수 있다.
 
