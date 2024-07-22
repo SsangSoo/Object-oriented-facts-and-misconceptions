@@ -42,9 +42,9 @@ public class OrderHistory {
     private int calculateTotalPrice(List<CoffeeOrder> coffeeOrders) {
         int totalPrice = 0;
         for(CoffeeOrder coffeeOrder : coffeeOrders) {
-            totalPrice = coffeeOrder.getMenu().getPrice() * coffeeOrder.getCount();
+            totalPrice += coffeeOrder.getMenu().getPrice() * coffeeOrder.getCount();
         }
-        return totalPrice;
+        return this.totalPrice + totalPrice;
     }
 
 }

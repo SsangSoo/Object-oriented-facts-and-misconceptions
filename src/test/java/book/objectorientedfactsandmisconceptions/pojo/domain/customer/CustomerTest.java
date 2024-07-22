@@ -30,7 +30,6 @@ class CustomerTest {
         //when
         PaymentHistory paymentHistoryAtDay = todtn.getPaymentHistoryAtDay(LocalDate.now());
 
-
         //then
         List<OrderHistory> orderHistoryList = paymentHistoryAtDay.getOrderHistoryList();
         assertThat(orderHistoryList.size()).isEqualTo(1);                       // 한 개의 주문내역
@@ -62,23 +61,20 @@ class CustomerTest {
         // when
         PaymentHistory paymentHistoryAtYear = todtn.getPaymentHistoryAtYear(2024);
 
-
         // then
         List<OrderHistory> orderHistoryList = paymentHistoryAtYear.getOrderHistoryList();
-
         assertThat(orderHistoryList.size()).isEqualTo(2);
 
-        OrderHistory orderHistory = orderHistoryList.getFirst();                        // 주문 내역 안에 12000원과 주문한 날짜(오늘)
+        OrderHistory orderHistory = orderHistoryList.getFirst();
         assertThat(orderHistory).extracting("orderedDate", "totalPrice")
-                .containsExactlyInAnyOrder(LocalDate.now(), 12000);
-//
-//        assertThat(orderHistory.getCoffeeOrderList().size()).isEqualTo(1);
-//        CoffeeOrder coffeeOrder = orderHistory.getCoffeeOrderList().getFirst();
-//        assertThat(coffeeOrder).extracting("menu", "count")
-//                .containsExactlyInAnyOrder(Menu.AMERICANO, 3);
-//
-//        assertThat(coffeeOrder.getMenu()).extracting("coffee", "price")
-//                .containsExactlyInAnyOrder("아메리카노", 4000);
+                .containsExactlyInAnyOrder( LocalDate.of(2024, 1,30), 8500);
+
+        OrderHistory twoAmericanoOrderHistory = orderHistoryList.get(1);
+        assertThat(twoAmericanoOrderHistory).extracting("orderedDate", "totalPrice")
+                .containsExactlyInAnyOrder( LocalDate.of(2024, 3,1), 8000);
+
     }
+
+
 
 }
