@@ -1,7 +1,7 @@
 package book.objectorientedfactsandmisconceptions.pojo.responsebillity;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.CoffeeOrder;
 
 import java.util.List;
 

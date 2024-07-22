@@ -1,9 +1,9 @@
 package book.objectorientedfactsandmisconceptions.pojo.domain.barista;
 
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.domain.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.CoffeeOrder;
 import book.objectorientedfactsandmisconceptions.pojo.responsebillity.BaristaResponsibillity;
 import lombok.Getter;
 

@@ -1,6 +1,7 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain;
+package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
 
 
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.CoffeeOrder;
 import lombok.Getter;
 
 import java.time.LocalDate;

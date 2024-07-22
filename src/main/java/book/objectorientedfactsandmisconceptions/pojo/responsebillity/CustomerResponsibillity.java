@@ -1,9 +1,9 @@
 package book.objectorientedfactsandmisconceptions.pojo.responsebillity;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.PaymentHistory;
-import book.objectorientedfactsandmisconceptions.pojo.domain.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.domain.customer.PaymentHistory;
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.CoffeeOrder;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,4 +1,4 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain;
+package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
 
 import lombok.Getter;
 

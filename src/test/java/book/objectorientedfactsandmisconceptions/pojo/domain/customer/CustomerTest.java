@@ -1,10 +1,7 @@
 package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.CoffeeOrder;
-import book.objectorientedfactsandmisconceptions.pojo.domain.Customer;
-import book.objectorientedfactsandmisconceptions.pojo.domain.OrderHistory;
-import book.objectorientedfactsandmisconceptions.pojo.domain.PaymentHistory;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.domain.global.Menu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
