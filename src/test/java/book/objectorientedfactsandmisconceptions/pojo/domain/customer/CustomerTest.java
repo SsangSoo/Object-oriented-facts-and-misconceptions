@@ -62,14 +62,15 @@ class CustomerTest {
         // when
         PaymentHistory paymentHistoryAtYear = todtn.getPaymentHistoryAtYear(2024);
 
+
         // then
         List<OrderHistory> orderHistoryList = paymentHistoryAtYear.getOrderHistoryList();
 
         assertThat(orderHistoryList.size()).isEqualTo(2);
 
-//        OrderHistory orderHistory = orderHistoryList.getFirst();                        // 주문 내역 안에 12000원과 주문한 날짜(오늘)
-//        assertThat(orderHistory).extracting("orderedDate", "totalPrice")
-//                .containsExactlyInAnyOrder(LocalDate.now(), 12000);
+        OrderHistory orderHistory = orderHistoryList.getFirst();                        // 주문 내역 안에 12000원과 주문한 날짜(오늘)
+        assertThat(orderHistory).extracting("orderedDate", "totalPrice")
+                .containsExactlyInAnyOrder(LocalDate.now(), 12000);
 //
 //        assertThat(orderHistory.getCoffeeOrderList().size()).isEqualTo(1);
 //        CoffeeOrder coffeeOrder = orderHistory.getCoffeeOrderList().getFirst();
