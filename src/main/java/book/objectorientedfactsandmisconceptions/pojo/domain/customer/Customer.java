@@ -45,7 +45,7 @@ public class Customer implements CustomerResponsibillity {
 
     @Override
     public List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String BaristaName, LocalDate orderDate) {
-        Barista barista = Barista.of(name);
+        Barista barista = Barista.of(BaristaName);
         List<Coffee> coffees = barista.makeCoffee(coffeeOrders, orderDate);
 
         // 주문내역에 추가

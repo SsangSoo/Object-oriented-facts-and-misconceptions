@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static book.objectorientedfactsandmisconceptions.pojo.domain.barista.BaristaList.*;
+
 
 @Getter
 public class Barista implements BaristaResponsibillity {
@@ -20,13 +22,16 @@ public class Barista implements BaristaResponsibillity {
     private String name;
     public Map<LocalDate, List<CoffeeOrder>> saleHistoris = new HashMap<>();    // 판매 내역
 
-
     private Barista(String name) {
         this.name = name;
     }
 
     public static Barista of(String name) {
-        return new Barista(name);
+        Map<String, Barista> baristaMap = getBaristaMap();
+        if(baristaMap.get(name) == null) {
+            baristaMap.put(name, new Barista(name));
+        }
+        return baristaMap.get(name);
     }
 
     // 1. 주문받은 커피를 제조함.

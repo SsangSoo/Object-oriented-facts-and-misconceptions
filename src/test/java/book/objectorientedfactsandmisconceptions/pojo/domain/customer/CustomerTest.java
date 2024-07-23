@@ -75,6 +75,35 @@ class CustomerTest {
 
     }
 
+    @Test
+    @DisplayName("월에 해당하는 주문내역을 확인할 수 있다.")
+    void getPaymentHistoryAtMonth() {
+        // given
+        CoffeeOrder oneEspresso = CoffeeOrder.of("에스프레소", 1);        // 주문할 커피
+        CoffeeOrder oneCafeLatte = CoffeeOrder.of("카페라떼", 1);        // 주문할 커피
+        todtn.orderCoffee(List.of(oneEspresso, oneCafeLatte), "쌩스타", LocalDate.of(2024, 1,30));
 
+        CoffeeOrder twoAmericano = CoffeeOrder.of("아메리카노", 2);        // 주문할 커피
+        todtn.orderCoffee(List.of(twoAmericano), "쌩스타", LocalDate.of(2024, 3,1));
 
+        CoffeeOrder twoCafeLatte = CoffeeOrder.of("카페라떼", 2);        // 주문할 커피
+        todtn.orderCoffee(List.of(twoCafeLatte), "쌩술타", LocalDate.of(2024, 7,1));
+
+        // when
+        PaymentHistory paymentHistoryAtYear = todtn.getPaymentHistoryAtMonth(2024, 7);
+
+        // then
+        List<OrderHistory> orderHistoryList = paymentHistoryAtYear.getOrderHistoryList();
+
+        assertThat(orderHistoryList.size()).isEqualTo(1);
+
+        OrderHistory orderHistory = orderHistoryList.getFirst();
+        assertThat(orderHistory).extracting("orderedDate", "totalPrice")
+                .containsExactlyInAnyOrder(LocalDate.of(2024, 7, 1), 9000);
+
+        CoffeeOrder coffeeOrder = orderHistory.getCoffeeOrderList().getFirst();
+
+        assertThat(coffeeOrder).extracting("menu", "count")
+                .containsExactlyInAnyOrder(Menu.CAFELATTE, 2);
+    }
 }
