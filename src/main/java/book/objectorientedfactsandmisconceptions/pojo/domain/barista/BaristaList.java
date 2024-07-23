@@ -5,6 +5,9 @@ import lombok.Getter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 바리스타 목록
+ */
 @Getter
 public class BaristaList {
 

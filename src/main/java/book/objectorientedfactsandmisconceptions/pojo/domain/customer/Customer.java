@@ -32,7 +32,7 @@ public class Customer implements CustomerResponsibillity {
         Menu[] sellingCoffeese = Menu.values();
 
         for (Menu menu : sellingCoffeese) {
-            System.out.println("커피 = " + menu.getCoffee() + ", 가격 = " + menu.getPrice());
+            System.out.println("커피 = " + menu.getCoffee() + ", 가격 = " + menu.getPrice()); // REST API 로 구현시 Response로
         }
         return Menu.values();
     }

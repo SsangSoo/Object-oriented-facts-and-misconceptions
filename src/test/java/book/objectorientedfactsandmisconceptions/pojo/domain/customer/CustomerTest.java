@@ -21,6 +21,33 @@ class CustomerTest {
     }
 
     @Test
+    @DisplayName("커피 메뉴를 확인할 수 있다.")
+    void getCoffeeMenu() {
+        // given -> BeforeEach에서 세팅
+
+        // when
+        Menu[] coffeeMenu = todtn.getCoffeeMenu();
+
+        // then
+        assertThat(coffeeMenu.length).isEqualTo(3);
+        Menu coffeeMenu1 = coffeeMenu[0];
+        Menu coffeeMenu2 = coffeeMenu[1];
+        Menu coffeeMenu3 = coffeeMenu[2];
+
+        assertThat(coffeeMenu1).extracting("coffee", "price")
+                .containsExactlyInAnyOrder("아메리카노", 4000);
+        assertThat(coffeeMenu2).extracting("coffee", "price")
+                .containsExactlyInAnyOrder("에스프레소", 4000);
+        assertThat(coffeeMenu3).extracting("coffee", "price")
+                .containsExactlyInAnyOrder("카페라떼", 4500);
+
+        assertThat(coffeeMenu1).isEqualTo(Menu.AMERICANO);
+        assertThat(coffeeMenu2).isEqualTo(Menu.ESSPRESSO);
+        assertThat(coffeeMenu3).isEqualTo(Menu.CAFELATTE);
+    }
+
+
+    @Test
     @DisplayName("커피를 주문한 내역을 일자에 맞게 확인할 수 있다.")
     void getPaymentHistoryAtDayTest() {
         //given
