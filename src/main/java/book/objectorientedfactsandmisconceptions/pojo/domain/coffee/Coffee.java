@@ -1,4 +1,4 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.global;
+package book.objectorientedfactsandmisconceptions.pojo.domain.coffee;
 
 
 /**

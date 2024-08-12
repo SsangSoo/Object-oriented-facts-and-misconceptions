@@ -1,4 +1,4 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.barista;
+package book.objectorientedfactsandmisconceptions.pojo.domain.history;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -24,10 +24,10 @@ public class SalesHistory {
 //        this.coffees = coffees;
     }
 
-    public book.objectorientedfactsandmisconceptions.pojo.domain.barista.SalesHistory of(LocalDate saleDate, int totalPrice
+    public SalesHistory of(LocalDate saleDate, int totalPrice
 //            , List<CoffeeCount> coffees
     ) {
-        return book.objectorientedfactsandmisconceptions.pojo.domain.barista.SalesHistory.builder()
+        return SalesHistory.builder()
                 .saleDate(saleDate)
                 .totalPrice(totalPrice)
 //                .coffees(coffees)

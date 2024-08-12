@@ -1,7 +1,7 @@
-package book.objectorientedfactsandmisconceptions.pojo.responsebillity;
+package book.objectorientedfactsandmisconceptions.pojo.domain.barista.usecase;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.global.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.global.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.CoffeeOrder;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  *      년, 월, 일 별로 판매 내역을 확인할 수 있다.
  *
  */
-public interface BaristaResponsibillity {
+public interface BaristaUsecase {
 
     // 1. 커피를 제조한다.
     List<Coffee> makeCoffee(List<CoffeeOrder> coffeeOrders, LocalDate orderDate);

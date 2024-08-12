@@ -1,10 +1,12 @@
 package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
 
 import book.objectorientedfactsandmisconceptions.pojo.domain.barista.Barista;
-import book.objectorientedfactsandmisconceptions.pojo.domain.global.CoffeeOrder;
-import book.objectorientedfactsandmisconceptions.pojo.domain.global.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.domain.global.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.responsebillity.CustomerResponsibillity;
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.domain.history.OrderHistory;
+import book.objectorientedfactsandmisconceptions.pojo.domain.history.PaymentHistory;
+import book.objectorientedfactsandmisconceptions.pojo.domain.customer.usecase.CustomerUsecase;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -14,7 +16,7 @@ import java.util.List;
 
 
 @Getter
-public class Customer implements CustomerResponsibillity {
+public class Customer implements CustomerUsecase {
 
     private String name;    // 고객 이름
     private List<OrderHistory> orderHistories = new ArrayList<>();
