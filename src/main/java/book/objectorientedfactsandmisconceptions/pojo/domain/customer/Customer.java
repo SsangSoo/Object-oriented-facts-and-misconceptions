@@ -39,12 +39,6 @@ public class Customer implements CustomerUsecase {
         return Menu.values();
     }
 
-
-    @Override
-    public List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String BaristaName) {
-        return orderCoffee(coffeeOrders, BaristaName, LocalDate.now());
-    }
-
     @Override
     public List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String BaristaName, LocalDate orderDate) {
         Barista barista = Barista.of(BaristaName);
