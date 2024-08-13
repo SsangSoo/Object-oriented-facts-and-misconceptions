@@ -1,9 +1,10 @@
 package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.CoffeeOrder;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.domain.history.OrderHistory;
-import book.objectorientedfactsandmisconceptions.pojo.domain.history.PaymentHistory;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.customer.Customer;
+import book.objectorientedfactsandmisconceptions.pojo.history.OrderHistory;
+import book.objectorientedfactsandmisconceptions.pojo.history.PaymentHistory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -48,6 +49,17 @@ class CustomerTest {
         assertThat(coffeeMenu3).isEqualTo(Menu.CAFELATTE);
     }
 
+    @Test
+    @DisplayName("없는 커피 메뉴를 확인하려고 하면 예외가 발생한다.")
+    void invalidCoffeeMenu() {
+        //given
+        String invalidMenu = "헤이즐넛라떼";
+
+        //when
+        //then
+        assertThatThrownBy(() -> Menu.of(invalidMenu))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     @DisplayName("커피를 주문한 내역을 일자에 맞게 확인할 수 있다.")

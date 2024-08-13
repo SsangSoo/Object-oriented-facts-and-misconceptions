@@ -1,8 +1,6 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.coffee;
+package book.objectorientedfactsandmisconceptions.pojo.coffee;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.usecase.CoffeeUsecase;
-
-public class Coffee implements CoffeeUsecase {
+public class Coffee {
 
     private String name;
     private int price;
@@ -17,7 +15,6 @@ public class Coffee implements CoffeeUsecase {
         this.price = price;
     }
 
-    @Override
     public Coffee makeCoffee(Menu coffee) {
         return of(coffee.getCoffee(), coffee.getPrice());
     }

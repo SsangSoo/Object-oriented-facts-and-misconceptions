@@ -1,12 +1,12 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
+package book.objectorientedfactsandmisconceptions.pojo.customer;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.barista.Barista;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.CoffeeOrder;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.history.OrderHistory;
-import book.objectorientedfactsandmisconceptions.pojo.domain.history.PaymentHistory;
-import book.objectorientedfactsandmisconceptions.pojo.domain.customer.usecase.CustomerUsecase;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.barista.Barista;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.history.OrderHistory;
+import book.objectorientedfactsandmisconceptions.pojo.history.PaymentHistory;
+import book.objectorientedfactsandmisconceptions.pojo.customer.usecase.CustomerUsecase;
 import lombok.Getter;
 
 import java.time.LocalDate;

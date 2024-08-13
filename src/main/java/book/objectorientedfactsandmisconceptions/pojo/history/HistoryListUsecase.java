@@ -1,6 +1,6 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.history;
+package book.objectorientedfactsandmisconceptions.pojo.history;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
 
 import java.util.List;
 

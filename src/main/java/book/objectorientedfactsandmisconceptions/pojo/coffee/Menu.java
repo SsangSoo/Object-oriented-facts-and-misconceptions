@@ -1,4 +1,4 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.coffee;
+package book.objectorientedfactsandmisconceptions.pojo.coffee;
 
 import lombok.Getter;
 
@@ -19,6 +19,15 @@ public enum Menu {
     Menu(String coffee, int price) {
         this.coffee = coffee;
         this.price = price;
+    }
+
+    public static Menu of(String coffee) {
+        for (Menu menu : Menu.values()) {
+            if (menu.getCoffee().equals(coffee)) {
+                return menu;
+            }
+        }
+        throw new IllegalArgumentException("Invalid coffee: " + coffee);
     }
 
 }

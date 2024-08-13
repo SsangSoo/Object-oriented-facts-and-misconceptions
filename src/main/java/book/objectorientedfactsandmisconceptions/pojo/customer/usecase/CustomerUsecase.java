@@ -1,10 +1,10 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.customer.usecase;
+package book.objectorientedfactsandmisconceptions.pojo.customer.usecase;
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.customer.Customer;
-import book.objectorientedfactsandmisconceptions.pojo.domain.history.PaymentHistory;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.customer.Customer;
+import book.objectorientedfactsandmisconceptions.pojo.history.PaymentHistory;
 
 import java.time.LocalDate;
 import java.util.List;

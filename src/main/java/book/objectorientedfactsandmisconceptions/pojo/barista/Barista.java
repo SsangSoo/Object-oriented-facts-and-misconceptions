@@ -1,10 +1,10 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.barista;
+package book.objectorientedfactsandmisconceptions.pojo.barista;
 
 
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.CoffeeOrder;
-import book.objectorientedfactsandmisconceptions.pojo.domain.barista.usecase.BaristaUsecase;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.barista.usecase.BaristaUsecase;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static book.objectorientedfactsandmisconceptions.pojo.domain.barista.BaristaList.*;
 
 
 @Getter
@@ -27,7 +25,7 @@ public class Barista implements BaristaUsecase {
     }
 
     public static Barista of(String name) {
-        Map<String, Barista> baristaMap = getBaristaMap();
+        Map<String, Barista> baristaMap = BaristaList.getBaristaMap();
         if(baristaMap.get(name) == null) {
             baristaMap.put(name, new Barista(name));
         }

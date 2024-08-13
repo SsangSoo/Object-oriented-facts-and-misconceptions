@@ -1,4 +1,4 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.history;
+package book.objectorientedfactsandmisconceptions.pojo.history;
 
 import lombok.Getter;
 

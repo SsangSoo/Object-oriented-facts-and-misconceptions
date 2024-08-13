@@ -1,4 +1,4 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.history;
+package book.objectorientedfactsandmisconceptions.pojo.history;
 
 /**
  * 판매/구매 내역의 책임
