@@ -6,7 +6,7 @@ package book.objectorientedfactsandmisconceptions.pojo.history;
  * 2. 월이라면 일별로 커피/수량, 합계를 알려줄 책임
  * 3. 년이라면 월별로 커피/수량, 합계를 알려줄 책임
  */
-public interface HistoryUsecase {
+public interface HistoryInterface {
 
 
 

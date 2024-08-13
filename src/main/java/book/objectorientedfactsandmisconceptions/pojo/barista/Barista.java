@@ -4,7 +4,8 @@ package book.objectorientedfactsandmisconceptions.pojo.barista;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.barista.usecase.BaristaUsecase;
+import book.objectorientedfactsandmisconceptions.pojo.barista.usecase.BaristaInterface;
+import book.objectorientedfactsandmisconceptions.pojo.repository.BaristaRepository;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -15,7 +16,7 @@ import java.util.Map;
 
 
 @Getter
-public class Barista implements BaristaUsecase {
+public class Barista implements BaristaInterface {
 
     private String name;
     public Map<LocalDate, List<CoffeeOrder>> saleHistoris = new HashMap<>();    // 판매 내역
@@ -25,7 +26,7 @@ public class Barista implements BaristaUsecase {
     }
 
     public static Barista of(String name) {
-        Map<String, Barista> baristaMap = BaristaList.getBaristaMap();
+        Map<String, Barista> baristaMap = BaristaRepository.getBaristaMap();
         if(baristaMap.get(name) == null) {
             baristaMap.put(name, new Barista(name));
         }

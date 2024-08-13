@@ -1,11 +1,10 @@
 package book.objectorientedfactsandmisconceptions.pojo.barista;
 
-import org.assertj.core.api.Assertions;
+import book.objectorientedfactsandmisconceptions.pojo.repository.BaristaRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BaristaListTest {
 
@@ -16,7 +15,7 @@ class BaristaListTest {
         Barista barista = null;
 
         //when
-        Barista nullBarista = BaristaList.getBarista("null");
+        Barista nullBarista = BaristaRepository.getBarista("null");
 
         //then
         assertThat(nullBarista).isNotNull();

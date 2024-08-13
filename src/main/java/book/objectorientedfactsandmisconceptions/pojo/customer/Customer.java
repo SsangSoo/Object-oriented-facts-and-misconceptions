@@ -6,27 +6,29 @@ import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.history.OrderHistory;
 import book.objectorientedfactsandmisconceptions.pojo.history.PaymentHistory;
-import book.objectorientedfactsandmisconceptions.pojo.customer.usecase.CustomerUsecase;
+import book.objectorientedfactsandmisconceptions.pojo.customer.usecase.CustomerInterface;
+import book.objectorientedfactsandmisconceptions.pojo.repository.BaristaRepository;
+import book.objectorientedfactsandmisconceptions.pojo.repository.CustomerRepository;
 import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 @Getter
-public class Customer implements CustomerUsecase {
+public class Customer implements CustomerInterface {
 
     private String name;    // 고객 이름
     private List<OrderHistory> orderHistories = new ArrayList<>();
 
+    private final Map<String, Barista> baristaMap = BaristaRepository.getBaristaMap();
+
+
     private Customer(String name) {
         this.name = name;
-    }
-
-    public static Customer of(String name) {
-        return new Customer(name);
     }
 
     /**
@@ -35,7 +37,9 @@ public class Customer implements CustomerUsecase {
      * @return
      */
     public static Customer createCustomer(String name) {
-        return of(name);
+        Map<String, Customer> customerMap = CustomerRepository.getCustomerMap();
+        customerMap.put(name, new Customer(name));
+        return customerMap.get(name);
     }
 
     @Override
@@ -49,9 +53,9 @@ public class Customer implements CustomerUsecase {
     }
 
     @Override
-    public List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String BaristaName, LocalDate orderDate) {
-        Barista barista = Barista.of(BaristaName);
-        List<Coffee> coffees = barista.makeCoffee(coffeeOrders, orderDate);
+    public List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String barista, LocalDate orderDate) {
+        Barista findBarista = BaristaRepository.getBarista(barista);
+        List<Coffee> coffees = findBarista.makeCoffee(coffeeOrders, orderDate);
 
         // 주문내역에 추가
         addOrderHistory(coffeeOrders, orderDate);

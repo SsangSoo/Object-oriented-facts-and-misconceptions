@@ -9,7 +9,7 @@ import java.util.List;
  * 1. 판매/구매 내역들을 담을 책임
  * 2. 손님/바리스타의 판매/구매내역리스트 / 총계를 알려줄 책임
  */
-public interface HistoryListUsecase {
+public interface HistoryListInterface {
 
     /**
      * 판매/구매 내역들을 담을 책임
@@ -24,5 +24,5 @@ public interface HistoryListUsecase {
      * @param day   : 일
      * @return      : 내역 리스트
      */
-    List<HistoryUsecase> getHistoryList(Integer year, Integer month, Integer day);
+    List<HistoryInterface> getHistoryList(Integer year, Integer month, Integer day);
 }

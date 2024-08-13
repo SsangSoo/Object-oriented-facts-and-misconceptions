@@ -5,6 +5,7 @@ import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.customer.Customer;
 import book.objectorientedfactsandmisconceptions.pojo.history.OrderHistory;
 import book.objectorientedfactsandmisconceptions.pojo.history.PaymentHistory;
+import book.objectorientedfactsandmisconceptions.pojo.repository.CustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -146,5 +147,19 @@ class CustomerTest {
 
         assertThat(coffeeOrder).extracting("menu", "count")
                 .containsExactlyInAnyOrder(Menu.CAFELATTE, 2);
+    }
+
+    @Test
+    @DisplayName("손님을 등록하고 조회할 수 있다.")
+    void createMemberTest() {
+        //given
+        String customerName = "쌩수";
+
+        //when
+        Customer customer = Customer.createCustomer(customerName);
+
+        //then
+        Customer findCustomer = CustomerRepository.getCustomer(customerName);
+        assertThat(customer).isEqualTo(findCustomer);
     }
 }

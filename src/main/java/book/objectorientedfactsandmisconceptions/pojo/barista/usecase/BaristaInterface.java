@@ -1,6 +1,5 @@
 package book.objectorientedfactsandmisconceptions.pojo.barista.usecase;
 
-import book.objectorientedfactsandmisconceptions.pojo.barista.Barista;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
 
@@ -29,7 +28,7 @@ import java.util.List;
  *      - 여러 잔
  *
  */
-public interface BaristaUsecase {
+public interface BaristaInterface {
 
     List<Coffee> makeCoffee(List<CoffeeOrder> coffeeOrders, LocalDate orderDate);
 

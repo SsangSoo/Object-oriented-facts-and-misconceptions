@@ -1,9 +1,11 @@
 package book.objectorientedfactsandmisconceptions.pojo.history;
 
+import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * 판매 내역을 보여주기 위한 정보
@@ -11,26 +13,23 @@ import java.time.LocalDate;
 @Getter
 public class SalesHistory {
 
-    private LocalDate saleDate;
+    private LocalDate date;
     private int totalPrice;
-//    private List<CoffeeCount> coffees;
+    private List<CoffeeOrder> orderList;
+
 
     @Builder
-    private SalesHistory(LocalDate saleDate, int totalPrice
-//            , List<CoffeeCount> coffees
-    ) {
-        this.saleDate = saleDate;
+    private SalesHistory(LocalDate date, int totalPrice, List<CoffeeOrder> orderList) {
+        this.date = date;
         this.totalPrice = totalPrice;
-//        this.coffees = coffees;
+        this.orderList = orderList;
     }
 
-    public SalesHistory of(LocalDate saleDate, int totalPrice
-//            , List<CoffeeCount> coffees
-    ) {
+    public SalesHistory of(LocalDate date, int totalPrice, List<CoffeeOrder> coffees) {
         return SalesHistory.builder()
-                .saleDate(saleDate)
+                .date(date)
                 .totalPrice(totalPrice)
-//                .coffees(coffees)
+                .orderList(orderList)
                 .build();
     }
 
