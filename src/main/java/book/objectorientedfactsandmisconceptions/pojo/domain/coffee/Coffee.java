@@ -1,11 +1,8 @@
 package book.objectorientedfactsandmisconceptions.pojo.domain.coffee;
 
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.usecase.CoffeeUsecase;
 
-/**
- * 커피 객체
- * 책임 1. 제조된다.
- */
-public class Coffee {
+public class Coffee implements CoffeeUsecase {
 
     private String name;
     private int price;
@@ -20,4 +17,8 @@ public class Coffee {
         this.price = price;
     }
 
+    @Override
+    public Coffee makeCoffee(Menu coffee) {
+        return of(coffee.getCoffee(), coffee.getPrice());
+    }
 }

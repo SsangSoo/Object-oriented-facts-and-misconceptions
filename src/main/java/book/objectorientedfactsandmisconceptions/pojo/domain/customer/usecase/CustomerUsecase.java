@@ -2,6 +2,7 @@ package book.objectorientedfactsandmisconceptions.pojo.domain.customer.usecase;
 
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.domain.customer.Customer;
 import book.objectorientedfactsandmisconceptions.pojo.domain.history.PaymentHistory;
 import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.CoffeeOrder;
 
@@ -9,18 +10,38 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * 손님의 책임
+ * 
+ * 손님 요구사항
  * - 메뉴를 확인할 수 있다.
  * - 구매 내역을 일 / 월 / 년 별로 확인할 수 있다.
- *      - 언제, 어떤 바리스타, 어떤 커피, 수량, 주문 별 금액, 총계
- *          - 일 : 시간, 커피/수량, 주문 총계(가격)
- *          - 월 : 몇월 몇일, 커피/수량, 일별 주문 합계(가격), 월 총계(가격)
- *          - 년 : 몇월 커피/수량, 월별 주문합계(가격) / 년 총계(가격)
+ *   - 언제, 어떤 바리스타, 어떤 커피, 수량, 주문 별 금액, 총계 
+ *     - 일 : 시간, 커피/수량, 주문 총계(가격)
+ *     - 월 : 몇월 몇일, 커피/수량, 일별 주문 합계(가격), 월 총계(가격)
+ *     - 년 : 몇월 커피/수량, 월별 주문합계(가격) / 년 총계(가격)
  * - 커피를 주문할 수 있다.
- *      - 바리스타를 지정할 수 있다.(바리스타 이름)
- *      - 어떤 커피를 몇 잔 주문할지 지정할 수 있다.
+ * - 바리스타를 지정할 수 있다.(바리스타 이름)
+ * - 어떤 커피를 몇 잔 주문할지 지정할 수 있다.
+ * 
+ * 
+ * 손님의 책임
+ * 1. 등록(생성)될 책임
+ * 2. 회원 정보를 변경힐 첵임
+ * 3. 주문 내역을 확인할 책임
+ * 4. 커피 주문 책임
+ *    4-1. 확장 : 포장/주문 구분
+ * 5. 메뉴를 확인할 책임
  */
 public interface CustomerUsecase {
+
+    /**
+     * 손님 등록의 책임
+     *
+     * @param name : 손님
+     * @return : 손님
+     */
+    static Customer createCustomer(String name) {
+        return Customer.of(name);
+    }
 
     /**
      * 메뉴를 확인할 수 있다.

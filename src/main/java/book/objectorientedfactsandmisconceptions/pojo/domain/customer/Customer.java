@@ -25,9 +25,10 @@ public class Customer implements CustomerUsecase {
         this.name = name;
     }
 
-    public static Customer createCustomer(String name) {
+    public static Customer of(String name) {
         return new Customer(name);
     }
+
 
     @Override
     public Menu[] getCoffeeMenu() {

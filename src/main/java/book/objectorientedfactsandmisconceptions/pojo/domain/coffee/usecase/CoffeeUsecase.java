@@ -7,8 +7,7 @@ import java.util.List;
 
 /**
  * 커피의 책임
- * - 생산될 책임
- * 
+ * 1. 생산될 책임
  */
 public interface CoffeeUsecase {
 
@@ -19,13 +18,7 @@ public interface CoffeeUsecase {
      */
     Coffee makeCoffee(Menu coffee);
 
-    /**
-     * 생산될 책임(여러 잔)
-     * @param coffee        : 커피 메뉴
-     * @param quantity      : 수량
-     * @return              : 여러 잔의 커피
-     */
-    List<Coffee> makeCoffees(Menu coffee, Integer quantity);
+
     
     
 }

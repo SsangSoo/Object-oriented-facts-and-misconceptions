@@ -3,8 +3,7 @@ package book.objectorientedfactsandmisconceptions.pojo.domain.coffee;
 import lombok.Getter;
 
 /**
- * 메뉴판 객체
- *
+ * 메뉴판 enum
  */
 @Getter
 public enum Menu {

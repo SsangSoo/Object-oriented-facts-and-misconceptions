@@ -1,11 +1,9 @@
 package book.objectorientedfactsandmisconceptions.pojo.domain.coffee;
 
+import book.objectorientedfactsandmisconceptions.pojo.domain.coffee.usecase.CoffeeOrderUsecase;
 import lombok.Getter;
 
-/**
- * 주문 정보를 담기 위한 객체
- * 책임 1. 주문 정보를 담는다.
- */
+
 @Getter
 public class CoffeeOrder implements CoffeeOrderUsecase {
 
@@ -17,12 +15,14 @@ public class CoffeeOrder implements CoffeeOrderUsecase {
         this.count = count;
     }
 
-    public static CoffeeOrder of(Menu coffee, int count) {
-        return addCoffeeToCart(coffee, count);
+    @Override
+    public CoffeeOrder addOrder(String menu, int count) {
+        return new CoffeeOrder(Menu.valueOf(menu), count);
     }
 
-    public static CoffeeOrder addCoffeeToCart(Menu coffee, int count) {
-        return new CoffeeOrder(Menu.valueOf(coffee.getCoffee()), count);
+    @Override
+    public CoffeeOrder addOrder(Menu menu, int count) {
+        return new CoffeeOrder(menu, count);
     }
 
 
