@@ -29,6 +29,14 @@ public class Customer implements CustomerUsecase {
         return new Customer(name);
     }
 
+    /**
+     * Override 성 메서드
+     * @param name
+     * @return
+     */
+    public static Customer createCustomer(String name) {
+        return of(name);
+    }
 
     @Override
     public Menu[] getCoffeeMenu() {

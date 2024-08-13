@@ -1,7 +1,12 @@
-객.사.오를 읽고 구현해보는 커피숍
-
+# 객.사.오를 읽고 구현해보는 커피숍
 1. POJO 로 먼저 구현해보기
 2. REST API 방식으로 구현해보기
+
+## 구조
+
+<div align="left">
+  <img src="resource/structure.jpg">
+</div>
 
 ## 도메인 요구사항
 

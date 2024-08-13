@@ -54,7 +54,7 @@ class CustomerTest {
     void getPaymentHistoryAtDayTest() {
         //given
         CoffeeOrder threeAmericano = CoffeeOrder.of("아메리카노", 3);        // 주문할 커피
-        todtn.orderCoffee(List.of(threeAmericano), "쌩스타");                 // 커피 주문
+        todtn.orderCoffee(List.of(threeAmericano), "쌩스타", LocalDate.now());                 // 커피 주문
 
         //when
         PaymentHistory paymentHistoryAtDay = todtn.getPaymentHistoryAtDay(LocalDate.now());
