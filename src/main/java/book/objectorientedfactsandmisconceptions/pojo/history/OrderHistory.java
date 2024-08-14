@@ -40,11 +40,10 @@ public class OrderHistory {
 
     // 주문에 대한 총계
     private int calculateTotalPrice(List<CoffeeOrder> coffeeOrders) {
-        int totalPrice = 0;
         for(CoffeeOrder coffeeOrder : coffeeOrders) {
-            totalPrice += coffeeOrder.getMenu().getPrice() * coffeeOrder.getCount();
+            this.totalPrice += coffeeOrder.getMenu().getPrice() * coffeeOrder.getCount();
         }
-        return this.totalPrice + totalPrice;
+        return this.totalPrice;
     }
 
 }

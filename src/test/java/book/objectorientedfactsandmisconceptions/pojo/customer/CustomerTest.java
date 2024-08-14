@@ -1,4 +1,4 @@
-package book.objectorientedfactsandmisconceptions.pojo.domain.customer;
+package book.objectorientedfactsandmisconceptions.pojo.customer;
 
 import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
@@ -67,7 +67,7 @@ class CustomerTest {
     void getPaymentHistoryAtDayTest() {
         //given
         CoffeeOrder threeAmericano = CoffeeOrder.of("아메리카노", 3);        // 주문할 커피
-        todtn.orderCoffee(List.of(threeAmericano), "쌩스타", LocalDate.now());                 // 커피 주문
+        todtn.orderCoffee("쌩스타", LocalDate.now(), threeAmericano);                 // 커피 주문
 
         //when
         PaymentHistory paymentHistoryAtDay = todtn.getPaymentHistoryAtDay(LocalDate.now());
@@ -95,10 +95,10 @@ class CustomerTest {
         // given
         CoffeeOrder oneEspresso = CoffeeOrder.of("에스프레소", 1);        // 주문할 커피
         CoffeeOrder oneCafeLatte = CoffeeOrder.of("카페라떼", 1);        // 주문할 커피
-        todtn.orderCoffee(List.of(oneEspresso, oneCafeLatte), "쌩스타", LocalDate.of(2024, 1,30));
+        todtn.orderCoffee("쌩스타", LocalDate.of(2024, 1,30), oneEspresso, oneCafeLatte);
 
         CoffeeOrder twoAmericano = CoffeeOrder.of("아메리카노", 2);        // 주문할 커피
-        todtn.orderCoffee(List.of(twoAmericano), "쌩스타", LocalDate.of(2024, 3,1));
+        todtn.orderCoffee("쌩스타", LocalDate.of(2024, 3,1), twoAmericano);
 
         // when
         PaymentHistory paymentHistoryAtYear = todtn.getPaymentHistoryAtYear(2024);
@@ -123,13 +123,13 @@ class CustomerTest {
         // given
         CoffeeOrder oneEspresso = CoffeeOrder.of("에스프레소", 1);        // 주문할 커피
         CoffeeOrder oneCafeLatte = CoffeeOrder.of("카페라떼", 1);        // 주문할 커피
-        todtn.orderCoffee(List.of(oneEspresso, oneCafeLatte), "쌩스타", LocalDate.of(2024, 1,30));
+        todtn.orderCoffee("쌩스타", LocalDate.of(2024, 1,30), oneEspresso, oneCafeLatte);
 
         CoffeeOrder twoAmericano = CoffeeOrder.of("아메리카노", 2);        // 주문할 커피
-        todtn.orderCoffee(List.of(twoAmericano), "쌩스타", LocalDate.of(2024, 3,1));
+        todtn.orderCoffee("쌩스타", LocalDate.of(2024, 3,1), twoAmericano);
 
         CoffeeOrder twoCafeLatte = CoffeeOrder.of("카페라떼", 2);        // 주문할 커피
-        todtn.orderCoffee(List.of(twoCafeLatte), "쌩술타", LocalDate.of(2024, 7,1));
+        todtn.orderCoffee("쌩술타", LocalDate.of(2024, 7,1), twoCafeLatte);
 
         // when
         PaymentHistory paymentHistoryAtYear = todtn.getPaymentHistoryAtMonth(2024, 7);

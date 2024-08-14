@@ -5,32 +5,24 @@ import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.barista.usecase.BaristaInterface;
-import book.objectorientedfactsandmisconceptions.pojo.repository.BaristaRepository;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Getter
 public class Barista implements BaristaInterface {
 
     private String name;
-    public Map<LocalDate, List<CoffeeOrder>> saleHistoris = new HashMap<>();    // 판매 내역
+    private final Map<LocalDate, List<CoffeeOrder>> saleHistoris = new HashMap<>();    // 판매 내역
 
     private Barista(String name) {
         this.name = name;
     }
 
     public static Barista of(String name) {
-        Map<String, Barista> baristaMap = BaristaRepository.getBaristaMap();
-        if(baristaMap.get(name) == null) {
-            baristaMap.put(name, new Barista(name));
-        }
-        return baristaMap.get(name);
+        return new Barista(name);
     }
 
     // 1. 주문받은 커피를 제조함.
@@ -63,15 +55,4 @@ public class Barista implements BaristaInterface {
         }
     }
 
-
-    // 커피 메뉴 선택
-    private static String getMakeCoffeeMenu(String coffee) {
-        String makeCoffee = "AMERICANO";
-        for(Menu menu : Menu.values()) {
-            if(menu.getCoffee().equals(coffee)) {
-                makeCoffee = menu.name();
-            }
-        }
-        return makeCoffee;
-    }
 }

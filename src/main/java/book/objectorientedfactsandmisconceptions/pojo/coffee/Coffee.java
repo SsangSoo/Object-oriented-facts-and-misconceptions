@@ -1,9 +1,11 @@
 package book.objectorientedfactsandmisconceptions.pojo.coffee;
 
+
 public class Coffee {
 
     private String name;
     private int price;
+
 
 
     public static Coffee of(String name, int price) {
@@ -15,7 +17,7 @@ public class Coffee {
         this.price = price;
     }
 
-    public Coffee makeCoffee(Menu coffee) {
+    public Coffee createCoffee(Menu coffee) {
         return of(coffee.getCoffee(), coffee.getPrice());
     }
 }

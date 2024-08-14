@@ -13,22 +13,20 @@ import java.util.Objects;
 @Getter
 public class BaristaRepository {
 
-    private static Map<String, Barista> baristaMap = new HashMap<>();
+    private BaristaRepository() {}
 
-    public static Map<String, Barista> getBaristaMap() {
-        return baristaMap;
-    }
+    private static final Map<String, Barista> baristaMap = new HashMap<>();
 
     public static void addBarista(Barista barista) {
         baristaMap.put(barista.getName(), barista);
     }
 
     public static Barista getBarista(String barista) {
-        Barista findBarista = baristaMap.get(barista);
-        if(Objects.isNull(findBarista)) {
+        Barista getBarista = baristaMap.get(barista);
+        if(Objects.isNull(getBarista)) {
             addBarista(Barista.of(barista));
-            findBarista = baristaMap.get(barista);
+            getBarista = baristaMap.get(barista);
         }
-        return findBarista;
+        return getBarista;
     }
 }

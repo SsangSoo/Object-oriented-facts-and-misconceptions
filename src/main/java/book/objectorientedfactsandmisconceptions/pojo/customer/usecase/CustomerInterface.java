@@ -3,7 +3,6 @@ package book.objectorientedfactsandmisconceptions.pojo.customer.usecase;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.customer.Customer;
 import book.objectorientedfactsandmisconceptions.pojo.history.PaymentHistory;
 
 import java.time.LocalDate;
@@ -39,7 +38,7 @@ public interface CustomerInterface {
      * @param orderDate     : 주문 일자(기본 LocalDate.now())
      * @return              : 주문한 커피리스트
      */
-    List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String barista, LocalDate orderDate);
+    List<Coffee> orderCoffee(String barista, LocalDate orderDate, CoffeeOrder... coffeeOrder);
 
     /**
      * 구매내역을 년 별로 확인한다.

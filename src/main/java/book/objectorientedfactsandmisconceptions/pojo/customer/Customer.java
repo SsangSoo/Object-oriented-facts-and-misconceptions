@@ -15,17 +15,12 @@ import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 
 @Getter
 public class Customer implements CustomerInterface {
 
-    private String name;    // 고객 이름
-    private List<OrderHistory> orderHistories = new ArrayList<>();
-
-    private final Map<String, Barista> baristaMap = BaristaRepository.getBaristaMap();
-
+    private final String name;    // 고객 이름
+    private final List<OrderHistory> orderHistories = new ArrayList<>();
 
     private Customer(String name) {
         this.name = name;
@@ -33,13 +28,12 @@ public class Customer implements CustomerInterface {
 
     /**
      * Override 성 메서드
-     * @param name
-     * @return
+     * @param name  : 손님 등록
+     * @return      : 손님
      */
     public static Customer createCustomer(String name) {
-        Map<String, Customer> customerMap = CustomerRepository.getCustomerMap();
-        customerMap.put(name, new Customer(name));
-        return customerMap.get(name);
+        CustomerRepository.addCustomer(new Customer(name));
+        return CustomerRepository.getCustomer(name);
     }
 
     @Override
@@ -53,12 +47,12 @@ public class Customer implements CustomerInterface {
     }
 
     @Override
-    public List<Coffee> orderCoffee(List<CoffeeOrder> coffeeOrders, String barista, LocalDate orderDate) {
+    public List<Coffee> orderCoffee(String barista, LocalDate orderDate, CoffeeOrder... coffeeOrders) {
         Barista findBarista = BaristaRepository.getBarista(barista);
-        List<Coffee> coffees = findBarista.makeCoffee(coffeeOrders, orderDate);
+        List<Coffee> coffees = findBarista.makeCoffee(List.of(coffeeOrders), orderDate);
 
         // 주문내역에 추가
-        addOrderHistory(coffeeOrders, orderDate);
+        addOrderHistory(List.of(coffeeOrders), orderDate);
 
         return coffees;
     }

@@ -13,11 +13,9 @@ import java.util.Objects;
 @Getter
 public class CustomerRepository {
 
-    private static Map<String, Customer> customerMap = new HashMap<>();
+    private CustomerRepository() {}
 
-    public static Map<String, Customer> getCustomerMap() {
-        return customerMap;
-    }
+    private static final Map<String, Customer> customerMap = new HashMap<>();
 
     public static void addCustomer(Customer customer) {
         customerMap.put(customer.getName(), customer);

@@ -25,7 +25,7 @@ public class SalesHistory {
         this.orderList = orderList;
     }
 
-    public SalesHistory of(LocalDate date, int totalPrice, List<CoffeeOrder> coffees) {
+    public SalesHistory of(LocalDate date, int totalPrice, List<CoffeeOrder> orderList) {
         return SalesHistory.builder()
                 .date(date)
                 .totalPrice(totalPrice)
