@@ -5,20 +5,18 @@ import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 책임 1. 주문내역을 보여줄 수 있어야 한다.
- *      일별로 주문한 커피와 개수, 총계를 담는다.
+ * 단건 조회
  *
  */
 @Getter
 public class OrderHistory {
 
-    private LocalDate orderedDate;
-    private List<CoffeeOrder> coffeeOrderList = new ArrayList<>();
-    private int totalPrice;
+    private final LocalDate orderedDate;
+    private final List<CoffeeOrder> coffeeOrderList;
+    private final int totalPrice;
 
     public static OrderHistory of(List<CoffeeOrder> coffeeOrders, LocalDate orderedDate) {
         return new OrderHistory(coffeeOrders, orderedDate);
@@ -40,10 +38,11 @@ public class OrderHistory {
 
     // 주문에 대한 총계
     private int calculateTotalPrice(List<CoffeeOrder> coffeeOrders) {
+        int result = 0;
         for(CoffeeOrder coffeeOrder : coffeeOrders) {
-            this.totalPrice += coffeeOrder.getMenu().getPrice() * coffeeOrder.getCount();
+            result += coffeeOrder.getMenu().getPrice() * coffeeOrder.getCount();
         }
-        return this.totalPrice;
+        return result;
     }
 
 }

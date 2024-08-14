@@ -1,16 +1,12 @@
 package book.objectorientedfactsandmisconceptions.pojo.coffee;
 
+import lombok.Getter;
 
+@Getter
 public class Coffee {
 
     private String name;
     private int price;
-
-
-
-    public static Coffee of(String name, int price) {
-        return new Coffee(name, price);
-    }
 
     private Coffee(String name, int price) {
         this.name = name;
@@ -18,6 +14,6 @@ public class Coffee {
     }
 
     public Coffee createCoffee(Menu coffee) {
-        return of(coffee.getCoffee(), coffee.getPrice());
+        return new Coffee(coffee.getCoffee(), coffee.getPrice());
     }
 }

@@ -22,11 +22,6 @@ public class BaristaRepository {
     }
 
     public static Barista getBarista(String barista) {
-        Barista getBarista = baristaMap.get(barista);
-        if(Objects.isNull(getBarista)) {
-            addBarista(Barista.of(barista));
-            getBarista = baristaMap.get(barista);
-        }
-        return getBarista;
+        return baristaMap.get(barista);
     }
 }
