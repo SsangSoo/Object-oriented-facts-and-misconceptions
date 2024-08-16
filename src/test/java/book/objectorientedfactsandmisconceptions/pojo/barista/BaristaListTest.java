@@ -1,10 +1,7 @@
 package book.objectorientedfactsandmisconceptions.pojo.barista;
 
-import book.objectorientedfactsandmisconceptions.pojo.repository.BaristaRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.*;
 
 class BaristaListTest {
 

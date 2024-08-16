@@ -1,11 +1,8 @@
 package book.objectorientedfactsandmisconceptions.pojo.customer;
 
-import book.objectorientedfactsandmisconceptions.pojo.coffee.CoffeeOrder;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
-import book.objectorientedfactsandmisconceptions.pojo.customer.Customer;
 import book.objectorientedfactsandmisconceptions.pojo.history.OrderHistory;
 import book.objectorientedfactsandmisconceptions.pojo.history.PaymentHistory;
-import book.objectorientedfactsandmisconceptions.pojo.repository.CustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
