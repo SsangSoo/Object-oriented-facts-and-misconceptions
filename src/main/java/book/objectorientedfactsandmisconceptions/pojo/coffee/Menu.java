@@ -22,10 +22,13 @@ public enum Menu {
     }
 
     public static Menu of(String coffee) {
-        for (Menu menu : Menu.values()) {
-            if (menu.getName().equals(coffee)) {
-                return menu;
-            }
+        switch (coffee) {
+            case "아메리카노":
+                return AMERICANO;
+            case "에스프레소":
+                return ESPRESSO;
+            case "카페라떼":
+                return CAFE_LATTE;
         }
         throw new IllegalArgumentException("Invalid coffee: " + coffee);
     }
