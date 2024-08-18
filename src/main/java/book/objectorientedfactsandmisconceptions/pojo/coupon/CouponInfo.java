@@ -1,5 +1,6 @@
 package book.objectorientedfactsandmisconceptions.pojo.coupon;
 
+import book.objectorientedfactsandmisconceptions.pojo.exception.BusinessException;
 import book.objectorientedfactsandmisconceptions.pojo.responsibility.CouponResponsibility;
 import lombok.Getter;
 
@@ -29,7 +30,7 @@ public class CouponInfo implements CouponResponsibility {
             int couponTemp = 0;
 
             if(stampTemp < 0) {
-                throw new IllegalStateException("스탬프 취소가 불가능한 상태입니다.");
+                throw new IllegalStateException(BusinessException.IMPOSSIBLE_CANCEL.getMessage());
             }
 
             CouponInfo couponInfo = initCoupon(this.stamp);
@@ -43,6 +44,10 @@ public class CouponInfo implements CouponResponsibility {
             this.coupon = this.stamp / 10;
             this.stamp = this.stamp - (this.coupon * 10);
         }
+    }
+
+    public void applyCoupon() {
+        this.coupon = 0;
     }
 
 

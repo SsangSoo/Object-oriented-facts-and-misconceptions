@@ -1,6 +1,6 @@
 package book.objectorientedfactsandmisconceptions.pojo.history;
 
-import book.objectorientedfactsandmisconceptions.pojo.OrderInfo;
+import book.objectorientedfactsandmisconceptions.pojo.order.OrderItem;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.history.element.HistoryElement;
 import book.objectorientedfactsandmisconceptions.pojo.history.element.HistoryElementOfDay;
@@ -25,16 +25,16 @@ class HistoryTest {
     void historyTest() {
         // given
         LocalDate date13 = LocalDate.of(2024, 8, 13);
-        OrderInfo orderInfoAmericano13 = new OrderInfo(AMERICANO, 3);
-        OrderInfo orderInfoCafeLatte13 = new OrderInfo(CAFE_LATTE, 1);
-        HistoryElement historyElement13 = new HistoryElement(date13, List.of(orderInfoAmericano13, orderInfoCafeLatte13));
+        OrderItem orderItemAmericano13 = new OrderItem(AMERICANO, 3);
+        OrderItem orderItemCafeLatte13 = new OrderItem(CAFE_LATTE, 1);
+        HistoryElement historyElement13 = new HistoryElement(date13, List.of(orderItemAmericano13, orderItemCafeLatte13));
 
 
         LocalDate date15 = LocalDate.of(2024, 8, 15);
-        OrderInfo orderInfoAmericano15 = new OrderInfo(AMERICANO, 2);
-        OrderInfo orderInfoEspresso15 = new OrderInfo(ESPRESSO, 2);
-        OrderInfo orderInfoCafeLatte15 = new OrderInfo(CAFE_LATTE, 2);
-        HistoryElement historyElement15 = new HistoryElement(date15, List.of(orderInfoAmericano15, orderInfoEspresso15, orderInfoCafeLatte15));
+        OrderItem orderItemAmericano15 = new OrderItem(AMERICANO, 2);
+        OrderItem orderItemEspresso15 = new OrderItem(ESPRESSO, 2);
+        OrderItem orderItemCafeLatte15 = new OrderItem(CAFE_LATTE, 2);
+        HistoryElement historyElement15 = new HistoryElement(date15, List.of(orderItemAmericano15, orderItemEspresso15, orderItemCafeLatte15));
 
         List<HistoryElement> histories = List.of(historyElement13, historyElement15);
 
@@ -48,12 +48,12 @@ class HistoryTest {
         assertThat(history.getTotalPrice()).isEqualTo(41500);
 
         assertThat(historyElement13.getTotalPrice()).isEqualTo(16500);
-        assertThat(historyElement13.getOrderInfo()).hasSize(2);
+        assertThat(historyElement13.getOrderItem()).hasSize(2);
         assertThat(historyElement13.getDate()).isEqualTo(date13);
 
 
         assertThat(historyElement15.getTotalPrice()).isEqualTo(25000);
-        assertThat(historyElement15.getOrderInfo()).hasSize(3);
+        assertThat(historyElement15.getOrderItem()).hasSize(3);
         assertThat(historyElement15.getDate()).isEqualTo(date15);
     }
 
@@ -63,16 +63,16 @@ class HistoryTest {
         // given
         LocalDate date13 = LocalDate.of(2024, 8, 13);
         LocalDateTime date1311 = LocalDateTime.of(date13, LocalTime.of(11, 0));
-        OrderInfo orderInfoAmericano1311 = new OrderInfo(AMERICANO, 1);
-        HistoryElementOfDay historyElementOfDay1311 = new HistoryElementOfDay(date1311.toLocalTime(), List.of(orderInfoAmericano1311));
+        OrderItem orderItemAmericano1311 = new OrderItem(AMERICANO, 1);
+        HistoryElementOfDay historyElementOfDay1311 = new HistoryElementOfDay(date1311.toLocalTime(), List.of(orderItemAmericano1311));
 
         LocalDateTime date1313 = LocalDateTime.of(date13, LocalTime.of(13, 0));
-        OrderInfo orderInfoEspresso1313 = new OrderInfo(ESPRESSO, 1);
-        HistoryElementOfDay historyElementOfDay1313 = new HistoryElementOfDay(date1313.toLocalTime(), List.of(orderInfoEspresso1313));
+        OrderItem orderItemEspresso1313 = new OrderItem(ESPRESSO, 1);
+        HistoryElementOfDay historyElementOfDay1313 = new HistoryElementOfDay(date1313.toLocalTime(), List.of(orderItemEspresso1313));
 
         LocalDateTime date1315 = LocalDateTime.of(date13, LocalTime.of(15, 0));
-        OrderInfo orderInfoCafeLatte1315 = new OrderInfo(CAFE_LATTE, 1);
-        HistoryElementOfDay historyElementOfDay1315 = new HistoryElementOfDay(date1315.toLocalTime(), List.of(orderInfoCafeLatte1315));
+        OrderItem orderItemCafeLatte1315 = new OrderItem(CAFE_LATTE, 1);
+        HistoryElementOfDay historyElementOfDay1315 = new HistoryElementOfDay(date1315.toLocalTime(), List.of(orderItemCafeLatte1315));
 
         List<HistoryElementOfDay> historyElementOfDay = List.of(
                 historyElementOfDay1311,
@@ -89,17 +89,17 @@ class HistoryTest {
         assertThat(history.getTotalPrice()).isEqualTo(12500);
 
         assertThat(historyElementOfDay1311.getTotalPriceOfDay()).isEqualTo(4000);
-        assertThat(historyElementOfDay1311.getOrderInfo()).hasSize(1);
+        assertThat(historyElementOfDay1311.getOrderItem()).hasSize(1);
         assertThat(historyElementOfDay1311.getOrderTime()).isEqualTo(LocalTime.of(11, 0));
 
 
         assertThat(historyElementOfDay1313.getTotalPriceOfDay()).isEqualTo(4000);
-        assertThat(historyElementOfDay1313.getOrderInfo()).hasSize(1);
+        assertThat(historyElementOfDay1313.getOrderItem()).hasSize(1);
         assertThat(historyElementOfDay1313.getOrderTime()).isEqualTo(LocalTime.of(13, 0));
 
 
         assertThat(historyElementOfDay1315.getTotalPriceOfDay()).isEqualTo(4500);
-        assertThat(historyElementOfDay1315.getOrderInfo()).hasSize(1);
+        assertThat(historyElementOfDay1315.getOrderItem()).hasSize(1);
         assertThat(historyElementOfDay1315.getOrderTime()).isEqualTo(LocalTime.of(15, 0));
 
 

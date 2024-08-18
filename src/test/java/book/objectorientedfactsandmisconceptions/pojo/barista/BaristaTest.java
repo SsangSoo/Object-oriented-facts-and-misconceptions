@@ -1,16 +1,14 @@
 package book.objectorientedfactsandmisconceptions.pojo.barista;
 
-import book.objectorientedfactsandmisconceptions.pojo.OrderInfo;
+import book.objectorientedfactsandmisconceptions.pojo.order.OrderItem;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BaristaTest {
 
@@ -24,8 +22,8 @@ class BaristaTest {
         //given
         Barista barista = new Barista();
 
-        OrderInfo orderAmericano = new OrderInfo(AMERICANO, 2);
-        OrderInfo orderEspresso = new OrderInfo(ESPRESSO, 1);
+        OrderItem orderAmericano = new OrderItem(AMERICANO, 2);
+        OrderItem orderEspresso = new OrderItem(ESPRESSO, 1);
 
         //when
         List<Coffee> coffees = barista.makeCoffee(List.of(orderAmericano, orderEspresso));

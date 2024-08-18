@@ -1,6 +1,6 @@
 package book.objectorientedfactsandmisconceptions.pojo.history.element;
 
-import book.objectorientedfactsandmisconceptions.pojo.OrderInfo;
+import book.objectorientedfactsandmisconceptions.pojo.order.OrderItem;
 import lombok.Getter;
 
 import java.time.LocalTime;
@@ -14,13 +14,13 @@ import java.util.List;
 public class HistoryElementOfDay {
 
     private final LocalTime orderTime;
-    private final List<OrderInfo> orderInfo;
+    private final List<OrderItem> orderItem;
     private final int totalPriceOfDay;
 
-    public HistoryElementOfDay(LocalTime orderTime, List<OrderInfo> orderInfo) {
+    public HistoryElementOfDay(LocalTime orderTime, List<OrderItem> orderItem) {
         this.orderTime = orderTime;
-        this.orderInfo = orderInfo;
-        this.totalPriceOfDay = orderInfo.stream()
+        this.orderItem = orderItem;
+        this.totalPriceOfDay = orderItem.stream()
                 .map(oi -> oi.getTotalPrice())
                 .reduce(0, Integer::sum);
     }

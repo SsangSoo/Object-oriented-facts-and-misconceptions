@@ -1,6 +1,6 @@
 package book.objectorientedfactsandmisconceptions.pojo.barista;
 
-import book.objectorientedfactsandmisconceptions.pojo.OrderInfo;
+import book.objectorientedfactsandmisconceptions.pojo.order.OrderItem;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.responsibility.BaristaResponsibility;
@@ -14,12 +14,12 @@ import java.util.List;
 public class Barista implements BaristaResponsibility {
 
     @Override
-    public List<Coffee> makeCoffee(List<OrderInfo> orderInfos) {
+    public List<Coffee> makeCoffee(List<OrderItem> orderItems) {
         List<Coffee> coffees = new ArrayList<>();
 
-        for(OrderInfo orderInfo : orderInfos) {
-            String coffee = orderInfo.getCoffee();
-            int quantity = orderInfo.getQuantity();
+        for(OrderItem orderItem : orderItems) {
+            String coffee = orderItem.coffee();
+            int quantity = orderItem.quantity();
 
             for (int i = 0; i < quantity; i++) {
                 coffees.add(Coffee.create(Menu.of(coffee)));
