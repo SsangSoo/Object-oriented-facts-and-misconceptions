@@ -8,11 +8,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CoffeeTest {
 
+    final Menu AMERICANO = Menu.AMERICANO;
+    final Menu ESPRESSO = Menu.ESPRESSO;
+    final Menu CAFE_LATTE = Menu.CAFE_LATTE;
+
     @Test
     @DisplayName("아메리카노를 만든다.")
     void makeAmericanoTest() {
         // given, when
-        Coffee coffee = Coffee.makeAmericano();
+        Coffee coffee = Coffee.create(AMERICANO);
 
         //then
         Assertions.assertThat(coffee).extracting("name", "price")
@@ -24,7 +28,7 @@ class CoffeeTest {
     @DisplayName("에스프레소를 만든다.")
     void makeEspresso() {
         // given, when
-        Coffee coffee = Coffee.makeEspresso();
+        Coffee coffee = Coffee.create(ESPRESSO);
 
         //then
         Assertions.assertThat(coffee).extracting("name", "price")
@@ -35,7 +39,7 @@ class CoffeeTest {
     @DisplayName("카페라떼를 만든다.")
     void makeCaffeLatte() {
         // given, when
-        Coffee coffee = Coffee.makeCaffeLatte();
+        Coffee coffee = Coffee.create(CAFE_LATTE);
 
         //then
         Assertions.assertThat(coffee).extracting("name", "price")

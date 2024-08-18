@@ -2,6 +2,7 @@ package book.objectorientedfactsandmisconceptions.pojo.barista;
 
 import book.objectorientedfactsandmisconceptions.pojo.OrderInfo;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
+import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.responsibility.BaristaResponsibility;
 
 import java.util.ArrayList;
@@ -20,23 +21,11 @@ public class Barista implements BaristaResponsibility {
             String coffee = orderInfo.getCoffee();
             int quantity = orderInfo.getQuantity();
 
-            if(coffee.equals("아메리카노")) {
-                for(int glass = 0; glass<quantity; glass++) {
-                    coffees.add(Coffee.makeAmericano());
-                }
-            }
-            if(coffee.equals("에스프레소")) {
-                for(int glass = 0; glass<quantity; glass++) {
-                    coffees.add(Coffee.makeEspresso());
-                }
-            }
-            if(coffee.equals("카페라떼")) {
-                for (int glass = 0; glass < quantity; glass++) {
-                    coffees.add(Coffee.makeCaffeLatte());
-                }
+            for (int i = 0; i < quantity; i++) {
+                coffees.add(Coffee.create(Menu.of(coffee)));
             }
         }
         return coffees;
-
     }
+
 }

@@ -5,8 +5,8 @@ package book.objectorientedfactsandmisconceptions.pojo.coffee;
  */
 public class Coffee {
 
-    private String name;
-    private int price;
+    private final String name;
+    private final int price;
 
 
     private Coffee(String name, int price) {
@@ -14,16 +14,8 @@ public class Coffee {
         this.price = price;
     }
 
-    public static Coffee makeAmericano() {
-        return new Coffee("아메리카노", 4000);
-    }
-
-    public static Coffee makeEspresso() {
-        return new Coffee("에스프레소", 4000);
-    }
-
-    public static Coffee makeCaffeLatte() {
-        return new Coffee("카페라떼", 4500);
+    public static Coffee create(Menu menu) {
+        return new Coffee(menu.getName(), menu.getPrice());
     }
 
 }
