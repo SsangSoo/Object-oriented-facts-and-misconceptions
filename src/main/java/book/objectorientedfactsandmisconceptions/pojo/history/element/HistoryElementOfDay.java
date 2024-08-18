@@ -21,7 +21,7 @@ public class HistoryElementOfDay {
         this.orderTime = orderTime;
         this.orderInfo = orderInfo;
         this.totalPriceOfDay = orderInfo.stream()
-                .map(oi -> oi.getPrice())
+                .map(oi -> oi.getTotalPrice())
                 .reduce(0, Integer::sum);
     }
 }
