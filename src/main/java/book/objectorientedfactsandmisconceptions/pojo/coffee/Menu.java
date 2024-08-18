@@ -9,21 +9,21 @@ import lombok.Getter;
 public enum Menu {
 
     AMERICANO("아메리카노", 4000),
-    ESSPRESSO("에스프레소", 4000),
-    CAFELATTE("카페라떼", 4500);
+    ESPRESSO("에스프레소", 4000),
+    CAFE_LATTE("카페라떼", 4500);
 
 
-    private String coffee;
+    private String name;
     private int price;
 
     Menu(String coffee, int price) {
-        this.coffee = coffee;
+        this.name = coffee;
         this.price = price;
     }
 
     public static Menu of(String coffee) {
         for (Menu menu : Menu.values()) {
-            if (menu.getCoffee().equals(coffee)) {
+            if (menu.getName().equals(coffee)) {
                 return menu;
             }
         }
