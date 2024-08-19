@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import static book.objectorientedfactsandmisconceptions.pojo.exception.BusinessException.IMPOSSIBLE_ORDER_BY_CUSTOMER;
+
 /**
  * 키오스크
  *
@@ -21,48 +23,64 @@ public class Kiosk implements KioskResponsibility {
 
     private final Map<String, Customer> customerRepository = new HashMap<>();
     private final List<HistoryElement> orderRepository = new ArrayList<>();
-
     private final Barista barista;
 
-    public Kiosk(Barista barista) {
+    private Kiosk(Barista barista) {
         this.barista = barista;
     }
 
     private Long idValue = 0L;
 
     @Override
-    public List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, String phone) {
+    public List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, Integer useCoupon, String phone) {
         // 비회원인 경우
-        if(!orderAsMember || phone == null) {
-            orderRepository.put(LocalDateTime.now(), orderInfo);
+        if(!orderAsMember && phone == null) {
+            orderRepository.add(new HistoryElement(orderInfo.getItems()));
             return barista.makeCoffee(orderInfo.getItems());
         }
+        // 회원으로 주문하는데, phone이 null이라면
+        if(orderAsMember && phone == null) {
+            throw new IllegalStateException(IMPOSSIBLE_ORDER_BY_CUSTOMER.getMessage());
+        }
 
+//        orderInfo.getItems();       // 주문 정보
+//        orderInfo.getTotalPrice();  // 주문 금액
+//        orderInfo.isCouponUse();    // 주문시 쿠폰 사용여부
+
+        // 회원으로 주문
         // 회원 조회 및 등록
         Customer findCustomer = customerRepository.get(phone);
-        Integer stamp = orderInfo.getItems().stream()
-                .map(OrderItem::getQuantity)
-                .reduce(0, Integer::sum);
-
         if (Objects.isNull(findCustomer)) {
             customerRepository.put(phone, Customer.create(++idValue, phone, stamp));
             findCustomer = customerRepository.get(phone);
         }
-        findCustomer.getCouponInfo().addStamp(stamp);
 
 
         // 쿠폰을 사용할 경우
         if(orderWithCoupon) {
-            CouponInfo customerCoupon = findCustomer.getCouponInfo();
-            int coupon = customerCoupon.getCoupon();
-            customerCoupon.applyCoupon();
+            int coupon = findCustomer.getCouponInfo().getCoupon();
+
+            if(coupon < useCoupon) {
+                throw new IllegalStateException("사용하려는 쿠폰이 가지고 있는 쿠폰보다 많으므로 쿠폰 적용이 불가능합니다.");
+            }
+
+            findCustomer.getCouponInfo().applyCoupon(useCoupon);
+
+    ////////////// 구매내역 책임 고민하기.
             orderInfo.applyCoupon(coupon);
         }
+
+        // 스탬프 적립
+        Integer stamp = orderInfo.getItems().stream()
+                .map(OrderItem::getQuantity)
+                .reduce(0, Integer::sum);
+
+        findCustomer.getCouponInfo().addStamp(stamp);
 
         // 판매 내역에 저장
         orderRepository.put(LocalDateTime.now(), orderInfo);
         // 구매 내역에 저장
-        findCustomer.addOrderInfo(orderInfo);
+        findCustomer.addOrderInfo(new HistoryElement(orderInfo.getItems()));
 
         return barista.makeCoffee(orderInfo.getItems());
 

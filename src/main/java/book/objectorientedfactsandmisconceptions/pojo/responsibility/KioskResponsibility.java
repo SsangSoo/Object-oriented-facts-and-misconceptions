@@ -22,10 +22,11 @@ public interface KioskResponsibility {
      * @param orderInfo         : 주문 정보
      * @param orderAsMember     : 회원으로 주문 여부                -> false일 경우 비회원으로 식별
      * @param orderWithCoupon   : 쿠폰 사용 여부
+     * @param useCoupon         : 사용 쿠폰 개수
      * @param phone             : 손님의 핸드폰 번호(손님 정보의 key) -> null일 경우 비회원으로 식벽
      * @return
      */
-    List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, String phone);
+    List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, Integer useCoupon, String phone);
 
     /**
      * 구매 내역을 보여줄 책임

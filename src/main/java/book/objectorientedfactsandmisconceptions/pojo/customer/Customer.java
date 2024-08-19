@@ -27,11 +27,15 @@ public class Customer implements CustomerResponsibility {
     private Customer(Long id, String phone, Integer stamp) {
         this.id = id;
         this.phone = phone;
-        this.couponInfo = stamp != null ? CouponInfo.initCoupon(stamp) : null;
+        this.couponInfo = CouponInfo.initCoupon(stamp);
     }
 
     public static Customer create(Long id, String name, Integer stamp) {
         return new Customer(id, name, stamp);
+    }
+
+    public static Customer create(Long id, String name) {
+        return new Customer(id, name, null);
     }
 
     public void addOrderInfo(HistoryElement historyElement) {

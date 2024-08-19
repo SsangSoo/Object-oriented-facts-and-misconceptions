@@ -13,11 +13,17 @@ public class CouponInfo implements CouponResponsibility {
     private int stamp;
     private int coupon;
 
+    private CouponInfo() {
+    }
+
     private CouponInfo(int stamp) {
         this.stamp = stamp;
     }
 
-    public static CouponInfo initCoupon(int stamp) {
+    public static CouponInfo initCoupon(Integer stamp) {
+        if(stamp == null) {
+            return new CouponInfo();
+        }
         CouponInfo couponInfo = new CouponInfo(stamp);
         couponInfo.coupon = stamp / 10;
         couponInfo.stamp = couponInfo.coupon > 0 ? stamp - (couponInfo.coupon * 10) : stamp;
@@ -27,7 +33,6 @@ public class CouponInfo implements CouponResponsibility {
     public void addStamp(int stamp) {
         if(stamp < 0) {
             int stampTemp = this.stamp + (this.coupon * 10) + stamp;
-            int couponTemp = 0;
 
             if(stampTemp < 0) {
                 throw new IllegalStateException(BusinessException.IMPOSSIBLE_CANCEL.getMessage());
@@ -46,8 +51,9 @@ public class CouponInfo implements CouponResponsibility {
         }
     }
 
-    public void applyCoupon() {
-        this.coupon = 0;
+    @Override
+    public void applyCoupon(int coupon) {
+        this.coupon -= coupon;
     }
 
 

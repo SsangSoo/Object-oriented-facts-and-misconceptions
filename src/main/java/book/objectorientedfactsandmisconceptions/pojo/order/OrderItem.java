@@ -13,7 +13,6 @@ public class OrderItem {
     private String coffee;
     private int quantity;
 
-
     public OrderItem(String coffee, int quantity) {
         this.coffee = coffee;
         this.quantity = quantity;
