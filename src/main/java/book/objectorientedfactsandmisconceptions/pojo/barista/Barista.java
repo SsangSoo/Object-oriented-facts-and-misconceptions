@@ -18,8 +18,8 @@ public class Barista implements BaristaResponsibility {
         List<Coffee> coffees = new ArrayList<>();
 
         for(OrderItem orderItem : orderItems) {
-            String coffee = orderItem.coffee();
-            int quantity = orderItem.quantity();
+            String coffee = orderItem.getCoffee();
+            int quantity = orderItem.getQuantity();
 
             for (int i = 0; i < quantity; i++) {
                 coffees.add(Coffee.create(Menu.of(coffee)));

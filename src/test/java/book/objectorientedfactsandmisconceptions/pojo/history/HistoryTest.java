@@ -3,7 +3,6 @@ package book.objectorientedfactsandmisconceptions.pojo.history;
 import book.objectorientedfactsandmisconceptions.pojo.order.OrderItem;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
 import book.objectorientedfactsandmisconceptions.pojo.history.element.HistoryElement;
-import book.objectorientedfactsandmisconceptions.pojo.history.element.HistoryElementOfDay;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

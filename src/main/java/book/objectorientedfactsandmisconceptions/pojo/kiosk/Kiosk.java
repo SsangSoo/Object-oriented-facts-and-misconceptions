@@ -20,14 +20,15 @@ import java.util.*;
 public class Kiosk implements KioskResponsibility {
 
     private final Map<String, Customer> customerRepository = new HashMap<>();
-    private final Map<LocalDateTime,OrderInfo> orderRepository = new HashMap<>();
+    private final List<HistoryElement> orderRepository = new ArrayList<>();
+
     private final Barista barista;
 
     public Kiosk(Barista barista) {
         this.barista = barista;
     }
 
-    private static Long idValue = 0L;
+    private Long idValue = 0L;
 
     @Override
     public List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, String phone) {
@@ -40,7 +41,7 @@ public class Kiosk implements KioskResponsibility {
         // 회원 조회 및 등록
         Customer findCustomer = customerRepository.get(phone);
         Integer stamp = orderInfo.getItems().stream()
-                .map(OrderItem::quantity)
+                .map(OrderItem::getQuantity)
                 .reduce(0, Integer::sum);
 
         if (Objects.isNull(findCustomer)) {

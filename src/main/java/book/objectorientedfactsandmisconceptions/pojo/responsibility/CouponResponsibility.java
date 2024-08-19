@@ -12,4 +12,9 @@ public interface CouponResponsibility {
      * @param stamp
      */
     void addStamp(int stamp);
+
+    /**
+     * 쿠폰 적용
+     */
+    void applyCoupon();
 }
