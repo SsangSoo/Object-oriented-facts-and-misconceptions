@@ -11,18 +11,18 @@ import java.util.List;
 @Getter
 public class HistoryPurchase {
 
-    private final String customer;
+    private final String phone;
     private final List<HistoryElement> histories;
     private final int totalPrice;
 
-    HistoryPurchase(String customer, List<HistoryElement> histories) {
-        this.customer = customer;
+    private HistoryPurchase(String phone, List<HistoryElement> histories) {
+        this.phone = phone;
         this.histories = histories;
         this.totalPrice = calculateTotalPrice(histories);
     }
 
-    public static HistoryPurchase of(String customer, List<HistoryElement> histories) {
-        return new HistoryPurchase(customer, histories);
+    public static HistoryPurchase of(String phone, List<HistoryElement> histories) {
+        return new HistoryPurchase(phone, histories);
     }
 
     private int calculateTotalPrice(List<HistoryElement> histories) {

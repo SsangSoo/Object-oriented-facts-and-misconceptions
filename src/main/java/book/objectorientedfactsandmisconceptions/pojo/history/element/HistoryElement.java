@@ -1,6 +1,7 @@
 package book.objectorientedfactsandmisconceptions.pojo.history.element;
 
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.order.OrderInfo;
 import book.objectorientedfactsandmisconceptions.pojo.order.OrderItem;
 import lombok.Getter;
 
@@ -18,6 +19,13 @@ public class HistoryElement {
     private final List<OrderItem> orderItem;
     private final int totalPrice;
 
+    public HistoryElement(LocalDateTime date, List<OrderItem> orderItem) {
+        this.date = date;
+        this.orderItem = orderItem;
+        this.totalPrice = calculateTotalPrice(orderItem);
+    }
+
+
     public HistoryElement(List<OrderItem> orderItem, Integer totalPrice) {
         this.date = LocalDateTime.now();
         this.orderItem = orderItem;
@@ -29,6 +37,11 @@ public class HistoryElement {
         this.orderItem = orderItem;
         this.totalPrice = calculateTotalPrice(orderItem);
     }
+
+    public HistoryElement(OrderInfo orderInfo) {
+        this(orderInfo.getItems(), orderInfo.getPaymentPrice());
+    }
+
 
     private static Integer calculateTotalPrice(List<OrderItem> orderItem) {
         return orderItem.stream()

@@ -13,8 +13,16 @@ import java.util.List;
  */
 public class Barista implements BaristaResponsibility {
 
-    @Override
-    public List<Coffee> makeCoffee(List<OrderItem> orderItems) {
+    private Barista() {}
+
+
+    /**
+     * 커피를 제조할 수 있다.
+     *  - 주문 정보에 따라 커피를 제조한다.
+     * @param orderItems
+     * @return
+     */
+    public static List<Coffee> makeCoffee(List<OrderItem> orderItems) {
         List<Coffee> coffees = new ArrayList<>();
 
         for(OrderItem orderItem : orderItems) {
@@ -27,5 +35,7 @@ public class Barista implements BaristaResponsibility {
         }
         return coffees;
     }
+
+
 
 }

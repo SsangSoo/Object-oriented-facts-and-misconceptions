@@ -1,5 +1,7 @@
 package book.objectorientedfactsandmisconceptions.pojo.responsibility;
 
+import book.objectorientedfactsandmisconceptions.pojo.history.History;
+import book.objectorientedfactsandmisconceptions.pojo.history.HistoryPurchase;
 import book.objectorientedfactsandmisconceptions.pojo.order.OrderInfo;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.history.element.HistoryElement;
@@ -37,27 +39,27 @@ public interface KioskResponsibility {
     /**
      * 내역(년)
      * @param year  : 년
-     * @param id    : 고객 id
+     * @param phone    : 고객 id
      * @return
      */
-    HistoryElement historyPurchaseOfYear(int year, Long id);
+    HistoryPurchase historyPurchaseOfYear(int year, String phone);
 
     /**
      * 내역(월)
      * @param year  : 년
      * @param month : 월
-     * @param id    : 고객 id
+     * @param phone    : 고객 id
      * @return
      */
-    HistoryElement historyPurchaseOfMonth(int year, int month, Long id);
+    HistoryPurchase historyPurchaseOfMonth(int year, int month, String phone);
 
     /**
      * 내역(일)
      * @param date  : 일
-     * @param id    : 고객 id
+     * @param phone    : 고객 id
      * @return
      */
-    HistoryElement historyPurchaseOfDay(LocalDate date, Long id);
+    HistoryPurchase historyPurchaseOfDay(LocalDate date, String phone);
 
 
     /**
@@ -71,7 +73,7 @@ public interface KioskResponsibility {
      * @param year  : 년
      * @return
      */
-    HistoryElement historySalesOfYear(int year);
+    History historySalesOfYear(int year);
 
     /**
      * 내역(월)
@@ -79,12 +81,12 @@ public interface KioskResponsibility {
      * @param month : 월
      * @return
      */
-    HistoryElement historySalesOfMonth(int year, int month);
+    History historySalesOfMonth(int year, int month);
 
     /**
      * 내역(일)
      * @param date  : 일
      * @return
      */
-    HistoryElement historySalesOfDay(LocalDate date);
+    History historySalesOfDay(LocalDate date);
 }

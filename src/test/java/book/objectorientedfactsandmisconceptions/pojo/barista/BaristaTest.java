@@ -20,13 +20,12 @@ class BaristaTest {
     @DisplayName("커피를 제조할 수 있다")
     void makeCoffeeTest() {
         //given
-        Barista barista = new Barista();
 
         OrderItem orderAmericano = new OrderItem(AMERICANO, 2);
         OrderItem orderEspresso = new OrderItem(ESPRESSO, 1);
 
         //when
-        List<Coffee> coffees = barista.makeCoffee(List.of(orderAmericano, orderEspresso));
+        List<Coffee> coffees = Barista.makeCoffee(List.of(orderAmericano, orderEspresso));
 
         //then
         assertThat(coffees.size()).isEqualTo(3);

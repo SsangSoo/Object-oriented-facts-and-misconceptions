@@ -17,4 +17,8 @@ public class OrderItem {
         this.coffee = coffee;
         this.quantity = quantity;
     }
+
+    public OrderItem(Menu menu, int quantity) {
+        this(menu.getName(), quantity);
+    }
 }
