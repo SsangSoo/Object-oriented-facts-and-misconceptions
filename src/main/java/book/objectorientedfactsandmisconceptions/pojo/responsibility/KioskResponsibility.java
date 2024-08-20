@@ -1,10 +1,9 @@
 package book.objectorientedfactsandmisconceptions.pojo.responsibility;
 
-import book.objectorientedfactsandmisconceptions.pojo.history.History;
-import book.objectorientedfactsandmisconceptions.pojo.history.HistoryPurchase;
+import book.objectorientedfactsandmisconceptions.pojo.history.SalesHistory;
+import book.objectorientedfactsandmisconceptions.pojo.history.PurchaseHistory;
 import book.objectorientedfactsandmisconceptions.pojo.order.OrderInfo;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
-import book.objectorientedfactsandmisconceptions.pojo.history.element.HistoryElement;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -42,7 +41,7 @@ public interface KioskResponsibility {
      * @param phone    : 고객 id
      * @return
      */
-    HistoryPurchase historyPurchaseOfYear(int year, String phone);
+    PurchaseHistory historyPurchaseOfYear(int year, String phone);
 
     /**
      * 내역(월)
@@ -51,7 +50,7 @@ public interface KioskResponsibility {
      * @param phone    : 고객 id
      * @return
      */
-    HistoryPurchase historyPurchaseOfMonth(int year, int month, String phone);
+    PurchaseHistory historyPurchaseOfMonth(int year, int month, String phone);
 
     /**
      * 내역(일)
@@ -59,7 +58,7 @@ public interface KioskResponsibility {
      * @param phone    : 고객 id
      * @return
      */
-    HistoryPurchase historyPurchaseOfDay(LocalDate date, String phone);
+    PurchaseHistory historyPurchaseOfDay(LocalDate date, String phone);
 
 
     /**
@@ -73,7 +72,7 @@ public interface KioskResponsibility {
      * @param year  : 년
      * @return
      */
-    History historySalesOfYear(int year);
+    SalesHistory historySalesOfYear(int year);
 
     /**
      * 내역(월)
@@ -81,12 +80,12 @@ public interface KioskResponsibility {
      * @param month : 월
      * @return
      */
-    History historySalesOfMonth(int year, int month);
+    SalesHistory historySalesOfMonth(int year, int month);
 
     /**
      * 내역(일)
      * @param date  : 일
      * @return
      */
-    History historySalesOfDay(LocalDate date);
+    SalesHistory historySalesOfDay(LocalDate date);
 }

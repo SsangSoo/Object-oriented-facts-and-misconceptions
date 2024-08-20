@@ -1,13 +1,13 @@
 package book.objectorientedfactsandmisconceptions.pojo.responsibility;
 
-import book.objectorientedfactsandmisconceptions.pojo.history.element.HistoryElement;
+import book.objectorientedfactsandmisconceptions.pojo.history.History;
 
 /**
  * 손님의 책임
  */
 public interface CustomerResponsibility {
 
-    void addOrderInfo(HistoryElement historyElement);
+    void addOrderInfo(History history);
 
 
 
