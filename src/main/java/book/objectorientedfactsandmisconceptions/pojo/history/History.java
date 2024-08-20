@@ -7,6 +7,7 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 주문당 내역
@@ -18,23 +19,23 @@ public class History {
     private final List<OrderItem> orderItem;
     private final int totalPrice;
 
-    public History(LocalDateTime date, List<OrderItem> orderItem) {
-        this.date = date;
+    public History(LocalDateTime date, List<OrderItem> orderItem, Integer totalPrice) {
+        this.date = Objects.isNull(date) ? LocalDateTime.now() : date;
         this.orderItem = orderItem;
-        this.totalPrice = calculateTotalPrice(orderItem);
+        this.totalPrice = Objects.isNull(totalPrice) ? calculateTotalPrice(orderItem) : totalPrice;
+    }
+
+    public History(LocalDateTime date, List<OrderItem> orderItem) {
+        this(date, orderItem, null);
     }
 
 
     public History(List<OrderItem> orderItem, Integer totalPrice) {
-        this.date = LocalDateTime.now();
-        this.orderItem = orderItem;
-        this.totalPrice = totalPrice;
+        this(null, orderItem, totalPrice);
     }
 
     public History(List<OrderItem> orderItem) {
-        this.date = LocalDateTime.now();
-        this.orderItem = orderItem;
-        this.totalPrice = calculateTotalPrice(orderItem);
+        this(null, orderItem, null);
     }
 
     public History(OrderInfo orderInfo) {

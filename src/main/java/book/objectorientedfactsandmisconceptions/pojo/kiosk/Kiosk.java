@@ -9,7 +9,6 @@ import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.customer.Customer;
 import book.objectorientedfactsandmisconceptions.pojo.history.History;
 import book.objectorientedfactsandmisconceptions.pojo.responsibility.KioskResponsibility;
-import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -34,8 +33,8 @@ public class Kiosk implements KioskResponsibility {
         return instance;
     }
 
-    protected Map<String, Customer> customerRepository = new HashMap<>();
-    protected List<History> orderRepository = new ArrayList<>();
+    private final Map<String, Customer> customerRepository = new HashMap<>();
+    private final List<History> orderRepository = new ArrayList<>();
 
     @Override
     public List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, Integer useCoupon, String phone) {
