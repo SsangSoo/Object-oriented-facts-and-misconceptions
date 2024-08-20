@@ -25,7 +25,7 @@ class CouponInfoTest {
         assertThat(couponInfo.getStamp()).isEqualTo(4);
 
         couponInfo.addStamp(-3); // 11
-        assertThat(couponInfo.getCoupon()).isEqualTo(0);
+        assertThat(couponInfo.getCoupon()).isZero();
         assertThat(couponInfo.getStamp()).isEqualTo(1);
     }
 
@@ -38,6 +38,46 @@ class CouponInfoTest {
         //when, then
         assertThatThrownBy(() ->
                 couponInfo.addStamp(-4))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("스탬프 취소가 불가능한 상태입니다.");
+
+    }
+
+    @Test
+    @DisplayName("쿠폰 초기화 시 쿠폰이 계산된다.")
+    void initCouponTest() {
+        //given // when
+        CouponInfo couponInfo = CouponInfo.initCoupon(13);
+
+        //then
+        assertThat(couponInfo.getStamp()).isEqualTo(3);
+        assertThat(couponInfo.getCoupon()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("쿠폰 적용시 적용된 쿠폰 수 만큼 빼버려진다.")
+    void applyCouponTest() {
+        //given
+        CouponInfo couponInfo = CouponInfo.initCoupon(13);
+
+        //when
+        couponInfo.applyCoupon(1);
+
+        //then
+        assertThat(couponInfo.getCoupon()).isZero();
+        assertThat(couponInfo.getStamp()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("적용하려는 쿠폰보다 가지고 있는 쿠폰 개수가 적다면 예외가 발생한다.")
+    void applyCouponExceptionTest() {
+        //given
+        CouponInfo couponInfo = CouponInfo.initCoupon(13);
+        assertThat(couponInfo.getCoupon()).isEqualTo(1);
+        assertThat(couponInfo.getStamp()).isEqualTo(3);
+
+        //when // then
+        assertThatThrownBy(() -> couponInfo.applyCoupon(2))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("스탬프 취소가 불가능한 상태입니다.");
 

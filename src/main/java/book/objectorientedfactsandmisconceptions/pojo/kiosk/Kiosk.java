@@ -52,17 +52,13 @@ public class Kiosk implements KioskResponsibility {
             customerRepository.put(phone, Customer.create(++idValue, phone));
             findCustomer = customerRepository.get(phone);
         }
-
         // 쿠폰을 사용할 경우
+        // 쿠폰의 검증을 원래 키오스크에 할당했으나 쿠폰 검증의 책임은 쿠폰한테 있다고 판단함.
         if(orderWithCoupon) {
-            int coupon = findCustomer.getCouponInfo().getCoupon();
-
-            if(coupon < useCoupon) {
-                throw new IllegalStateException(IMPOSSIBLE_CANCEL.getMessage());
+            if(findCustomer.getCouponInfo().applyCoupon(useCoupon)) {
+                orderInfo.applyCoupon(useCoupon);
             }
-            applyCoupon(orderInfo, useCoupon, findCustomer.getCouponInfo());
         }
-
         // 스탬프 적립 및 계산
         calculateStamp(orderInfo, findCustomer);
 
@@ -84,10 +80,6 @@ public class Kiosk implements KioskResponsibility {
     }
 
 
-    private static void applyCoupon(OrderInfo orderInfo, Integer useCoupon, CouponInfo couponInfo) {
-        couponInfo.applyCoupon(useCoupon);
-        orderInfo.applyCoupon(useCoupon);
-    }
 
 
     @Override

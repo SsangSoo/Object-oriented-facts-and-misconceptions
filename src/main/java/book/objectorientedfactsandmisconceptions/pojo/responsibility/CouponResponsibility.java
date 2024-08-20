@@ -16,5 +16,5 @@ public interface CouponResponsibility {
     /**
      * 쿠폰 적용
      */
-    void applyCoupon(int coupon);
+    boolean applyCoupon(int coupon);
 }
