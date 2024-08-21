@@ -1,6 +1,7 @@
 package book.objectorientedfactsandmisconceptions.pojo.order;
 
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Menu;
+import book.objectorientedfactsandmisconceptions.pojo.exception.BusinessException;
 import lombok.Getter;
 
 import java.util.List;
@@ -28,8 +29,11 @@ public class OrderInfo {
      * @param useCoupon : 사용할 쿠폰 개수
      */
     public void applyCoupon(int useCoupon) {
-        this.discount = useCoupon * -4000;
-        this.paymentPrice = this.totalPrice + this.discount;
+        if(!this.couponUse)  {
+            throw new IllegalStateException(BusinessException.CANNOT_USE_COUPON.getMessage());
+        }
+        this.discount = useCoupon * 4000;
+        this.paymentPrice = this.totalPrice - this.discount;
     }
 
 

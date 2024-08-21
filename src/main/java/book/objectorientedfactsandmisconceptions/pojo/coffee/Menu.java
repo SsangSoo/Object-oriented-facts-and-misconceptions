@@ -1,5 +1,6 @@
 package book.objectorientedfactsandmisconceptions.pojo.coffee;
 
+import book.objectorientedfactsandmisconceptions.pojo.exception.BusinessException;
 import lombok.Getter;
 
 /**
@@ -30,7 +31,7 @@ public enum Menu {
             case "카페라떼":
                 return CAFE_LATTE;
         }
-        throw new IllegalArgumentException("Invalid coffee: " + coffee);
+        throw new IllegalArgumentException(BusinessException.INVALID_COFFEE.getMessage() + " : " + coffee);
     }
 
 }

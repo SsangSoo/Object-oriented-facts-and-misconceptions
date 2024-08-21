@@ -14,24 +14,24 @@ import static org.assertj.core.api.Assertions.*;
 
 class HistoryTest {
 
-    final Menu AMERICANO = Menu.AMERICANO;
-    final Menu ESPRESSO = Menu.ESPRESSO;
-    final Menu CAFE_LATTE = Menu.CAFE_LATTE;
+    final Menu americano = Menu.AMERICANO;
+    final Menu espresso = Menu.ESPRESSO;
+    final Menu cafeLatte = Menu.CAFE_LATTE;
 
     @Test
     @DisplayName("판매 내역 확인 테스트")
     void historyTest() {
         // given
         LocalDateTime date13 = LocalDateTime.of(2024, 8, 13, 0, 0);
-        OrderItem orderItemAmericano13 = new OrderItem(AMERICANO, 3);
-        OrderItem orderItemCafeLatte13 = new OrderItem(CAFE_LATTE, 1);
+        OrderItem orderItemAmericano13 = new OrderItem(americano, 3);
+        OrderItem orderItemCafeLatte13 = new OrderItem(cafeLatte, 1);
         History history13 = new History(date13, List.of(orderItemAmericano13, orderItemCafeLatte13));
 
 
         LocalDateTime date15 = LocalDateTime.of(2024, 8, 15, 0, 0);
-        OrderItem orderItemAmericano15 = new OrderItem(AMERICANO, 2);
-        OrderItem orderItemEspresso15 = new OrderItem(ESPRESSO, 2);
-        OrderItem orderItemCafeLatte15 = new OrderItem(CAFE_LATTE, 2);
+        OrderItem orderItemAmericano15 = new OrderItem(americano, 2);
+        OrderItem orderItemEspresso15 = new OrderItem(espresso, 2);
+        OrderItem orderItemCafeLatte15 = new OrderItem(cafeLatte, 2);
         History history15 = new History(date15, List.of(orderItemAmericano15, orderItemEspresso15, orderItemCafeLatte15));
 
         List<History> histories = List.of(history13, history15);
@@ -60,15 +60,15 @@ class HistoryTest {
         // given
         LocalDate date13 = LocalDate.of(2024, 8, 13);
         LocalDateTime date1311 = LocalDateTime.of(date13, LocalTime.of(11, 0));
-        OrderItem orderItemAmericano1311 = new OrderItem(AMERICANO, 1);
+        OrderItem orderItemAmericano1311 = new OrderItem(americano, 1);
         History historyOfDay1311 = new History(date1311, List.of(orderItemAmericano1311));
 
         LocalDateTime date1313 = LocalDateTime.of(date13, LocalTime.of(13, 0));
-        OrderItem orderItemEspresso1313 = new OrderItem(ESPRESSO, 1);
+        OrderItem orderItemEspresso1313 = new OrderItem(espresso, 1);
         History historyOfDay1313 = new History(date1313, List.of(orderItemEspresso1313));
 
         LocalDateTime date1315 = LocalDateTime.of(date13, LocalTime.of(15, 0));
-        OrderItem orderItemCafeLatte1315 = new OrderItem(CAFE_LATTE, 1);
+        OrderItem orderItemCafeLatte1315 = new OrderItem(cafeLatte, 1);
         History historyOfDay1315 = new History(date1315, List.of(orderItemCafeLatte1315));
 
         List<History> histories = List.of(
@@ -105,8 +105,8 @@ class HistoryTest {
     void calculateTotalPriceTest() {
         //given
         LocalDateTime date = LocalDateTime.of(2024, 8, 13, 0, 0);
-        OrderItem orderItemAmericano = new OrderItem(AMERICANO, 3);
-        OrderItem orderItemCafeLatte = new OrderItem(CAFE_LATTE, 1);
+        OrderItem orderItemAmericano = new OrderItem(americano, 3);
+        OrderItem orderItemCafeLatte = new OrderItem(cafeLatte, 1);
 
         //when
         History history = new History(date, List.of(orderItemAmericano, orderItemCafeLatte));
@@ -119,9 +119,8 @@ class HistoryTest {
     @DisplayName("각 주문에 대한 주문 금액을 지정하면 주문이 많더라도 지정된 금액이 저장된다. ")
     void priceByConstructorTest() {
         //given
-        LocalDateTime date = LocalDateTime.of(2024, 8, 13, 0, 0);
-        OrderItem orderItemAmericano = new OrderItem(AMERICANO, 3);
-        OrderItem orderItemCafeLatte = new OrderItem(CAFE_LATTE, 1);
+        OrderItem orderItemAmericano = new OrderItem(americano, 3);
+        OrderItem orderItemCafeLatte = new OrderItem(cafeLatte, 1);
 
         //when
         History history = new History(List.of(orderItemAmericano, orderItemCafeLatte), 4000);

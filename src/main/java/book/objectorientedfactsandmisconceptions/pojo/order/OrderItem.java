@@ -14,7 +14,7 @@ public class OrderItem {
     private int quantity;
 
     public OrderItem(String coffee, int quantity) {
-        this.coffee = coffee;
+        this.coffee = Menu.of(coffee).getName();
         this.quantity = quantity;
     }
 
