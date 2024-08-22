@@ -15,3 +15,8 @@
 2. 구매 내역 조회
 3. 판매 내역 조회
 
+
+#### POJO 구현에 대한 포스팅
+
+[https://ssangsu.tistory.com/304](https://ssangsu.tistory.com/304) 
+
