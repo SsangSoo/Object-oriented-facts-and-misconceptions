@@ -6,6 +6,7 @@ import book.objectorientedfactsandmisconceptions.pojo.order.OrderInfo;
 import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ public interface KioskResponsibility {
      * @param phone             : 손님의 핸드폰 번호(손님 정보의 key) -> null일 경우 비회원으로 식벽
      * @return
      */
-    List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, Integer useCoupon, String phone);
+    List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, Integer useCoupon, String phone, LocalDateTime date);
 
     /**
      * 구매 내역을 보여줄 책임

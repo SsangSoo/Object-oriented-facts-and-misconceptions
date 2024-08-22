@@ -13,6 +13,7 @@ import book.objectorientedfactsandmisconceptions.pojo.responsibility.KioskRespon
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.*;
 
@@ -40,7 +41,7 @@ public class Kiosk implements KioskResponsibility {
     private final List<History> orderRepository = new ArrayList<>();
 
     @Override
-    public List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, Integer useCoupon, String phone) {
+    public List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, Integer useCoupon, String phone, LocalDateTime date) {
         if(orderWithCoupon && useCoupon == null) {
             throw new IllegalStateException(BusinessException.INVALID_STATE.getMessage());
         }
@@ -50,14 +51,11 @@ public class Kiosk implements KioskResponsibility {
             orderRepository.add(new History(orderInfo.getItems()));
             return Barista.makeCoffee(orderInfo.getItems());
         }
+
         // 회원으로 주문하는데, phone이 null이라면
         if(orderAsMember && phone == null) {
             throw new IllegalStateException(IMPOSSIBLE_ORDER_BY_CUSTOMER.getMessage());
         }
-
-//        orderInfo.getItems();       // 주문 정보
-//        orderInfo.getTotalPrice();  // 주문 금액
-//        orderInfo.isCouponUse();    // 주문시 쿠폰 사용여부
 
         // 회원으로 주문
         // 회원 조회 및 등록
@@ -69,15 +67,15 @@ public class Kiosk implements KioskResponsibility {
         // 쿠폰을 사용할 경우
         // 쿠폰의 검증을 원래 키오스크에 할당했으나 쿠폰 검증의 책임은 쿠폰한테 있다고 판단함.
         if(orderWithCoupon && findCustomer.getCouponInfo().applyCoupon(useCoupon)) {
-                orderInfo.applyCoupon(useCoupon);
+            orderInfo.applyCoupon(useCoupon);
         }
         // 스탬프 적립 및 계산
         calculateStamp(orderInfo, findCustomer);
 
         // 판매 내역에 저장
-        orderRepository.add(new History(orderInfo));
+        orderRepository.add(new History(orderInfo, date));
         // 구매 내역에 저장
-        findCustomer.addOrderInfo(new History(orderInfo));
+        findCustomer.addOrderInfo(new History(orderInfo, date));
 
         return Barista.makeCoffee(orderInfo.getItems());
 

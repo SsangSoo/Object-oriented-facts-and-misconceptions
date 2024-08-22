@@ -38,6 +38,10 @@ public class History {
         this(null, orderItem, null);
     }
 
+    public History(OrderInfo orderInfo, LocalDateTime date) {
+        this(date, orderInfo.getItems(), orderInfo.getPaymentPrice());
+    }
+
     public History(OrderInfo orderInfo) {
         this(orderInfo.getItems(), orderInfo.getPaymentPrice());
     }

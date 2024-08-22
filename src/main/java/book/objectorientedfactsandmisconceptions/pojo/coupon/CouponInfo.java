@@ -40,14 +40,14 @@ public class CouponInfo implements CouponResponsibility {
                 throw new IllegalStateException(BusinessException.IMPOSSIBLE_CANCEL.getMessage());
             }
 
-            CouponInfo couponInfo = initCoupon(this.stamp);
+            CouponInfo couponInfo = initCoupon(stampTemp);
             this.stamp = couponInfo.stamp;
             this.coupon = couponInfo.coupon;
+            return;
         }
 
         this.stamp += stamp;
-
-        if(this.stamp > 10) {
+        if(this.stamp >= 10) {
             this.coupon = this.stamp / 10;
             this.stamp = this.stamp - (this.coupon * 10);
         }

@@ -26,7 +26,7 @@ class CouponInfoTest {
         assertThat(couponInfo.getStamp()).isEqualTo(4);
 
         couponInfo.addStamp(-3); // 11
-        assertThat(couponInfo.getCoupon()).isZero();
+        assertThat(couponInfo.getCoupon()).isEqualTo(1);
         assertThat(couponInfo.getStamp()).isEqualTo(1);
     }
 
