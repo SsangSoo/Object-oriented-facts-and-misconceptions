@@ -1,5 +1,6 @@
 package book.objectorientedfactsandmisconceptions.pojo.kiosk;
 
+import book.objectorientedfactsandmisconceptions.pojo.exception.BusinessException;
 import book.objectorientedfactsandmisconceptions.pojo.history.SalesHistory;
 import book.objectorientedfactsandmisconceptions.pojo.history.PurchaseHistory;
 import book.objectorientedfactsandmisconceptions.pojo.order.OrderInfo;
@@ -9,6 +10,7 @@ import book.objectorientedfactsandmisconceptions.pojo.coffee.Coffee;
 import book.objectorientedfactsandmisconceptions.pojo.customer.Customer;
 import book.objectorientedfactsandmisconceptions.pojo.history.History;
 import book.objectorientedfactsandmisconceptions.pojo.responsibility.KioskResponsibility;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -20,6 +22,7 @@ import static book.objectorientedfactsandmisconceptions.pojo.exception.BusinessE
  * 키오스크
  *
  */
+@Getter
 public class Kiosk implements KioskResponsibility {
 
     private static Kiosk instance;
@@ -38,6 +41,10 @@ public class Kiosk implements KioskResponsibility {
 
     @Override
     public List<Coffee> orderCoffee(OrderInfo orderInfo, boolean orderAsMember, boolean orderWithCoupon, Integer useCoupon, String phone) {
+        if(orderWithCoupon && useCoupon == null) {
+            throw new IllegalStateException(BusinessException.INVALID_STATE.getMessage());
+        }
+
         // 비회원인 경우
         if(!orderAsMember && phone == null) {
             orderRepository.add(new History(orderInfo.getItems()));
@@ -63,8 +70,7 @@ public class Kiosk implements KioskResponsibility {
         // 쿠폰의 검증을 원래 키오스크에 할당했으나 쿠폰 검증의 책임은 쿠폰한테 있다고 판단함.
         if(orderWithCoupon && findCustomer.getCouponInfo().applyCoupon(useCoupon)) {
                 orderInfo.applyCoupon(useCoupon);
-            }
-
+        }
         // 스탬프 적립 및 계산
         calculateStamp(orderInfo, findCustomer);
 

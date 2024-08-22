@@ -4,7 +4,7 @@ import book.objectorientedfactsandmisconceptions.pojo.exception.BusinessExceptio
 import book.objectorientedfactsandmisconceptions.pojo.responsibility.CouponResponsibility;
 import lombok.Getter;
 
-import static book.objectorientedfactsandmisconceptions.pojo.exception.BusinessException.IMPOSSIBLE_CANCEL;
+import static book.objectorientedfactsandmisconceptions.pojo.exception.BusinessException.*;
 
 /**
  * 쿠폰 정보
@@ -32,7 +32,7 @@ public class CouponInfo implements CouponResponsibility {
         return couponInfo;
     }
 
-    public void addStamp(int stamp) {
+    public void addStamp(int stamp) throws IllegalStateException {
         if(stamp < 0) {
             int stampTemp = this.stamp + (this.coupon * 10) + stamp;
 
@@ -54,9 +54,9 @@ public class CouponInfo implements CouponResponsibility {
     }
 
     @Override
-    public boolean applyCoupon(int coupon) {
-        if(this.coupon < coupon) {
-            throw new IllegalStateException(IMPOSSIBLE_CANCEL.getMessage());
+    public boolean applyCoupon(Integer coupon) {
+        if(coupon == null || this.coupon < coupon) {
+            throw new IllegalStateException(CANNOT_USE_COUPON.getMessage());
         }
         this.coupon -= coupon;
         return true;

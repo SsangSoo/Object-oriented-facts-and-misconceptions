@@ -11,10 +11,10 @@ public interface CouponResponsibility {
      *  스탬프 개수를 받으면 스탬프 개수를 계산해서 쿠폰, 스탬프 계산한 결과를 얻을 수 있다.
      * @param stamp
      */
-    void addStamp(int stamp);
+    void addStamp(int stamp) throws IllegalStateException;
 
     /**
      * 쿠폰 적용
      */
-    boolean applyCoupon(int coupon);
+    boolean applyCoupon(Integer coupon);
 }
