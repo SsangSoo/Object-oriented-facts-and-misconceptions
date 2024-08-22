@@ -3,6 +3,7 @@ package book.objectorientedfactsandmisconceptions.pojo.coupon;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static book.objectorientedfactsandmisconceptions.pojo.exception.BusinessException.CANNOT_USE_COUPON;
 import static org.assertj.core.api.Assertions.*;
 
 class CouponInfoTest {
@@ -79,7 +80,7 @@ class CouponInfoTest {
         //when // then
         assertThatThrownBy(() -> couponInfo.applyCoupon(2))
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessage("스탬프 취소가 불가능한 상태입니다.");
+                .hasMessage(CANNOT_USE_COUPON.getMessage());
 
     }
 
