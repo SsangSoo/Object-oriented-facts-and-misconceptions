@@ -20,3 +20,6 @@
 
 [https://ssangsu.tistory.com/304](https://ssangsu.tistory.com/304) 
 
+
+#### 향후 개선 포인트
+1. 돈을 나타내는 변수(ex : price, totalPrice, paymentPrice 등)을 값 객체로 바꾸어서 '돈'과 관련된 책임을 해당 객체에게 부여하기
